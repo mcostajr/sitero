@@ -1,0 +1,41 @@
+@media (min-width: 1000px) {
+    .container {
+        display: none;
+    }
+}
+
+@media (max-width: 1000px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        background-color: rgb(37, 26, 26);
+        padding: 1rem;
+        overflow: hidden;
+        z-index: 10;
+
+        .firstInfo {
+            li {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 30px;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgba($color: #5a3939, $alpha: 1.0);
+                }
+
+                &:active {
+                    filter: brightness(0.8)
+                }
+            }
+        }
+
+        &:after {
+            border: 1px solid white;
+        }
+
+    }
+}

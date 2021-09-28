@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+
+    .buttonSingOut{
+        width: 100px;
+
+        &:hover {
+            cursor: pointer;
+            filter: brightness(0.8);
+        }
+    }
+}

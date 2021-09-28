@@ -1,0 +1,15 @@
+.info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    width: 100%;
+
+    .information{
+      display: flex;
+      flex-direction: column;
+      word-wrap: break-word;
+      
+      width: 50%;
+    }
+  }

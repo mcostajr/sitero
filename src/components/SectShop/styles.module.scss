@@ -1,0 +1,53 @@
+.lastshop {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        .titleShop {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            h3, p {
+                text-align: center;
+            }
+
+            p {
+                width: 60%;
+            }
+        }
+
+        .listShop{
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            .item {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                width: 300px;
+                gap: 10px;
+
+                div {
+                    padding: 10px;
+                    border-radius: 10px;
+                    background-color: rgb(24, 99, 24);
+
+                    color: white;
+                    font-weight: 600;
+                }
+
+                p {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
