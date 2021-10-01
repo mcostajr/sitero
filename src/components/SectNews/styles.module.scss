@@ -1,27 +1,42 @@
-
-
-.news {
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
   background: #F2F3F5;
-  padding: 20px 0;
+  padding: 30px 0;
   
-  .newsContainer {
+  .wrapper {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 60%;
     
-    .titleNews {
+    .title {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      word-wrap: break-word;
-      text-align: center;
+      gap: 10px;
 
-      p {
-        width: 60%;
+      i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background-color: rgb(84, 84, 221);
+        border-radius: 50%;
+
+        color: white;
+
+        .icon {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
       }
+    }
+
+    .description {
+      text-align: center;
+      width: 60%;
+      word-wrap: break-word;
     }
 
     .listNews {
@@ -32,37 +47,52 @@
       overflow: hidden;
       flex-wrap: wrap;
 
-      .infoNews{
+      .itemNews{
         display: flex;
         flex-direction: column;
-        align-items: center;
-        width: 400px;
-        border: 1px solid rgba(0,0,0,0.12);
-        box-shadow: 0 5px 10px rgba(0,0,0,0.12);
+        width: 18rem;
 
         img {
-          width: 400px;
+          width: 100%;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
         }
 
-        p {
-          width: 90%;
-          margin: 0px auto;
-        }
+        .information {
+          display: flex;
+          flex-direction: column;
+          border: 1px solid rgba(0,0,0,0.12);
+          box-shadow: 0 5px 10px rgba(0,0,0,0.12);
 
-        button {
-          cursor: pointer;
-          width: 80%;
-          margin: 10px 0;
-          background-color: rgb(66, 64, 219);
-          border: 0;
-          border-radius: 5px;
-          padding: 5px;
-          color: white;
-          font-weight: 600;
-        }
+          span {
+            text-align: center;
+            font-weight: 600;
+          }
 
-        button:hover {
-          filter: brightness(0.8);
+          p {
+            margin-left: 5px;
+            word-wrap: break-word;
+          }
+  
+          div {
+            text-align: center;
+            
+            button {
+              cursor: pointer;
+              width: 80%;
+              margin-bottom: 10px;
+              background-color: rgb(66, 64, 219);
+              border: 0;
+              border-radius: 5px;
+              padding: 5px;
+              color: white;
+              font-weight: 600;
+            }
+    
+            button:hover {
+              filter: brightness(0.8);
+            }
+          }
         }
       }
     }

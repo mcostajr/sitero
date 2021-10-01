@@ -1,11 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import styles from '../styles/Home.module.scss';
 import News from '../components/SectNews';
 import Banners from '../components/SectBanners';
 import NewsShop from '../components/SectShop';
 import Info from '../components/SectInfo/inde';
+
+import styles from '../styles/Home.module.scss';
 
 const Home: NextPage = () => {
   
@@ -13,7 +14,6 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <Head>
         <title>SiteRO</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>

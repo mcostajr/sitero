@@ -2,6 +2,22 @@
     display: flex;
     flex-direction: column;
     width: 200px;
+    gap: 10px;
+
+    div {
+        display: flex;
+        
+        .avatar {
+            width: 25px;
+            height: 25px;
+            margin-right: 5px;
+        }
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+    }
 
     .buttonSingOut{
         width: 100px;

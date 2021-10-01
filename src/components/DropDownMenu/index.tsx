@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { LoginContext } from '../../contexts/LoginContext';
 import { MenuContext } from '../../contexts/MenuContext';
 import { NavList } from '../Header';
@@ -10,25 +10,43 @@ import styles from './styles.module.scss';
 export default function DropdownMenu() {
 
     const { user } = useContext(LoginContext);
-    const { open } = useContext(MenuContext);
+    const { open, handleClickOutside } = useContext(MenuContext);
   
+    const divRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      document.addEventListener("mousedown", (e) => handleClickOutside(divRef, e));
+
+      return () => {
+        document.removeEventListener("mousedown", (e) => handleClickOutside(divRef, e));
+      }
+    })
+
     return (
       <>
-        {open && (
-          <div className={styles.container}>
-            <ul className={styles.firstInfo}>
+      {open && (
+        <>
+        <aside className={styles.container} ref={divRef}>
+          <nav className={styles.firstInfo}>
+            <ul className={styles.listNav}>
               <NavList/>
             </ul>
-            <div className={styles.secondInfo}>
-              {user ? (
-                <Profile/>
-              ):
-              (
-                <Login/>
-              )}
-            </div>
+          </nav>
+          <div className={styles.secondInfo}>
+            {user ? (
+              <Profile/>
+            ):
+            (
+              <Login/>
+            )}
           </div>
-        )}
+        </aside>
+
+        <div className={styles.overlay}>
+          <div className={styles.overlayActive}></div>
+        </div>
+        </>
+      )}
       </>
     )
   }

@@ -1,0 +1,17 @@
+.container {
+
+    .subHeader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+        background-color: rgb(31, 31, 114);
+
+        .profile {
+            display: flex;
+            width: 80%;
+        }
+    }
+
+
+}

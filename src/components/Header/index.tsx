@@ -1,33 +1,82 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AiOutlineMenu, AiOutlineDown} from 'react-icons/ai'
 import { FaRegUserCircle } from 'react-icons/fa'
 
 import { MenuContext } from '../../contexts/MenuContext';
 import { LoginContext } from '../../contexts/LoginContext';
 import DropDownLogin from '../DropDownLogin';
+import DropdownMenu from '../DropDownMenu';
+
 import styles from './styles.module.scss'
 
 export default function Header() {
-  const { openLogin } = useContext(MenuContext)
+  
+  const [isSticky, setSticky] = useState(false);
+  const divRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      window.scrollY > divRef.current!.getBoundingClientRect().bottom
+        ? setSticky(true)
+        : setSticky(false)
+    }
+  
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
+  })
 
   return (
-    <div className={styles.container}>
+    <header className={`${styles.container} ${isSticky ? styles.sticky : ''}`} ref={divRef}>
       <div className={styles.wrapper}>
         <div className={styles.logo}>
           <Image
             src="/logo.png"
             alt="logo"
-            width={200}
-            height={100}
+            layout="fill"
+            className={styles.image}
           />
         </div>
-        <div className={styles.navigation}>
-          <NavBar/>
-        </div>
+        <NavBar/>
+        <ProfInfo/>
+        <ButtonMenu/>
+        <DropdownMenu/>
       </div>
-      {openLogin && <DropDownLogin/>}
+    </header>
+  )
+}
+
+function ButtonMenu() {
+
+  const { toggleMenu } = useContext(MenuContext);
+
+  return (
+    <div className={styles.containerButtonMenu}>
+      <button 
+        className={styles.button} 
+        onClick={() => toggleMenu()}
+      >
+        <AiOutlineMenu className={styles.icon} />
+      </button>
+    </div>
+  )
+}
+
+function ProfInfo() {
+
+  const { user } = useContext(LoginContext);
+  const { toggleMenuLogin } = useContext(MenuContext)
+  
+  return (
+    <div className={styles.login}>
+      <FaRegUserCircle className={styles.avatar}/>
+      <span>{user ? user.name : 'Visitante'}</span>
+      <AiOutlineDown className={styles.buttonDropDownLogin} onClick={() => toggleMenuLogin()}/>
+      <DropDownLogin/>
     </div>
   )
 }
@@ -48,7 +97,7 @@ export function NavList() {
 
 function NavItem(props) {
   return (
-    <li>
+    <li className={styles.navigationItem}>
       <Link href={props.href}>
         <a>{props.children}</a>
       </Link>
@@ -58,28 +107,13 @@ function NavItem(props) {
 
 function NavBar() {
   
-  const { toggleMenu, toggleMenuLogin } = useContext(MenuContext);
-  const { user } = useContext(LoginContext);
-  
   return (
-      <>
-        <nav className={styles.navigationBase}>
-          <ul className={styles.navigationList}>
-            <NavList/>
-          </ul>
-          <div className={styles.login}>
-              <FaRegUserCircle className={styles.avatar}/>
-              <span>{user ? user.name : 'Visitante'}</span>
-              <AiOutlineDown className={styles.buttonDropDownLogin} onClick={() => toggleMenuLogin()}/>
-          </div>
-        </nav>
-
-        <nav className={styles.navigationButton}>
-          <AiOutlineMenu 
-            className={styles.button}
-            onClick={() => toggleMenu()}
-          />
-        </nav>
-      </>
+    <div className={styles.navigation}>
+      <nav className={styles.navigationBase}>
+        <ul className={styles.navigationList}>
+          <NavList/>
+        </ul>
+      </nav>
+    </div>
   )
 }

@@ -10,27 +10,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     switch(method) {
         case 'POST':
-            if(username.length < 4 || password < 8) break;
+            try {
+                if(username.length < 4 || password < 8) break;
 
-            await prisma.login.create({
-                data: { 
-                    userid: username,
-                    user_pass: password,
-                    email: email
+                await prisma.login.create({
+                    data: { 
+                        userid: username,
+                        user_pass: password,
+                        email: email
+                    }
+                })
+                
+                res.status(200).json({ statusCode: res.status, message: 'account created' });
+            }catch(err) {
+                res.status(500).json({ statusCode: res.status, message: 'account invalid' })
+            }finally {
+                async () =>{ 
+                  await prisma.$disconnect() 
                 }
-            })
-            
-            res.status(200).json({ message: 'account created' }) 
-            
-            break;
-
-        case 'GET':
-            const login = await prisma.login.findFirst({
-                where: {
-                    userid: String(req.query.username)
-                }
-            })
-            res.send(login?.userid)
+            }
             break;
 
         default:

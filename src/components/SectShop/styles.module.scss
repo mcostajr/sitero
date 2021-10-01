@@ -1,24 +1,44 @@
-.lastshop {
+.container {
     display: flex;
     justify-content: center;
-    padding: 20px 0;
+    padding: 30px 0;
     
-    .container {
+    .wrapper {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
 
-        .titleShop {
+        .title {
             display: flex;
-            flex-direction: column;
             align-items: center;
+            gap: 10px;
             
-            h3, p {
+            i {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+                background-color: rgb(84, 84, 221);
+                border-radius: 50%;
+
+                color: white;
+
+                .icon {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                }
+            }
+
+            h3 {
                 text-align: center;
             }
+        }
 
-            p {
-                width: 60%;
-            }
+        .description {
+            width: 80%;
+            text-align: center;
         }
 
         .listShop{
@@ -27,25 +47,38 @@
             flex-direction: row;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
 
-            .item {
+            .itemShop {
                 display: flex;
                 align-items: center;
                 flex-direction: column;
-                width: 300px;
+                width: 15rem;
                 gap: 10px;
 
-                div {
-                    padding: 10px;
+                button {
+                    border: 0;
                     border-radius: 10px;
+                    padding: 10px 5px;
                     background-color: rgb(24, 99, 24);
 
                     color: white;
+
+                    font-size: 1rem;
+                    font-weight: 600;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                span {
+                    font-size: 1.2rem;
                     font-weight: 600;
                 }
 
                 p {
-                    margin: 0;
                 }
             }
         }

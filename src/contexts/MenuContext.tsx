@@ -9,7 +9,8 @@ type MenuContextType = {
     open: boolean,
     toggleMenu: () => void,
     openLogin: boolean,
-    toggleMenuLogin: () => void
+    toggleMenuLogin: () => void,
+    handleClickOutside: (divRef: React.RefObject<HTMLDivElement>, event: any) => void
 }
 
 export const MenuContext = createContext({} as MenuContextType);
@@ -26,6 +27,13 @@ export default function MenuProvider({children}: MenuProviderType) {
     function toggleMenuLogin() {
         setOpenLogin(!openLogin)
     }
+    
+    function handleClickOutside(divRef: React.RefObject<HTMLDivElement> , event: any) {
+        if (divRef.current && !divRef.current.contains(event.target)){
+            openLogin && toggleMenuLogin()
+            open && toggleMenu()
+        }
+    }
 
     return (
         <MenuContext.Provider 
@@ -33,7 +41,8 @@ export default function MenuProvider({children}: MenuProviderType) {
                 open,
                 toggleMenu,
                 openLogin,
-                toggleMenuLogin
+                toggleMenuLogin,
+                handleClickOutside
             }}
         >
             {children}

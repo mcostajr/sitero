@@ -1,0 +1,97 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .leaderboard {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        width: 50%;
+
+        .leaderboardHead {
+            display: flex;
+            gap: 10px;
+
+            .position {
+                display: flex;
+                justify-content: flex-start;
+                width: 10%;
+            }
+
+            .name {
+                display: flex;
+                justify-content: flex-start;
+                width: 60%;
+            }
+
+            .baseLevel {
+                display: flex;
+                justify-content: flex-start;
+                width: 10%;
+            }
+
+            .jobLevel {
+                display: flex;
+                justify-content: flex-start;
+                width: 10%;
+            }
+
+            .class {
+                display: flex;
+                justify-content: flex-start;
+                width: 10%;
+            }
+        }
+
+        .leaderboardItem {
+            display: flex;
+            gap: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.158);
+
+            &:nth-child(2) {
+                height: 2rem;
+            }
+
+            .position {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 10%;
+                border-right: 1px solid rgba(0, 0, 0, 0.158);
+            }
+
+            .name {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 60%;
+                border-right: 1px solid rgba(0, 0, 0, 0.158);
+            }
+
+            .baseLevel {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 10%;
+                border-right: 1px solid rgba(0, 0, 0, 0.158);
+            }
+
+            .jobLevel {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 10%;
+                border-right: 1px solid rgba(0, 0, 0, 0.158);
+            }
+
+            .class {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 10%;
+            }
+        }
+    }
+}

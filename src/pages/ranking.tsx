@@ -1,7 +1,9 @@
+import Head from 'next/head';
 import { GetStaticProps } from 'next'
 import { PrismaClient } from '@prisma/client'
 
-import styles from 'styles.module.scss'
+import styles from '../styles/Ranking.module.scss'
+import { api } from '../services/axios'
 
 type Player = {
     char_id: number;
@@ -19,42 +21,82 @@ type RankingType = {
 export default function Ranking({ players }: RankingType) {
 
     return (
-        <div>
-            <ul>
-                {players?.map(player => {
+        <div className={styles.container}>
+            <Head>
+                <title>SiteRO | Ranking</title>
+            </Head>
+            <h1>Ranking</h1>
+            <ul className={styles.leaderboard}>
+                <li className={styles.leaderboardHead}>
+                    <div className={styles.position}>
+                        <span>Position</span>
+                    </div>
+                    <div className={styles.name}>
+                        <span>Name</span>
+                    </div>
+                    <div className={styles.baseLevel}>
+                        <span>Level</span>
+                    </div>
+                    <div className={styles.jobLevel}>
+                        <span>Job</span>
+                    </div>
+                    <div className={styles.class}>
+                        <span>Classe</span>
+                    </div>
+                </li>
+                {players?.map((player,idx) => {
                     return (
-                        <li key={player.char_id}>
-                            <span>{player.name}</span>
-                            <span>{player.base_level}</span>
+                        <li className={styles.leaderboardItem} key={player.char_id}>
+                            <div className={styles.position}>
+                                <span>{idx+1}</span>
+                            </div>
+                            <div className={styles.name}>
+                                <span>{player.name}</span>
+                            </div>
+                            <div className={styles.baseLevel}>
+                                <span>{player.base_level}</span>
+                            </div>
+                            <div className={styles.jobLevel}>
+                                <span>{player.job_level}</span>
+                            </div>
+                            <div className={styles.class}>
+                                <span>{className(player.class)}</span>
+                            </div>
                         </li>
                     )
                 })}
             </ul>
-            <h1>Ranking</h1>
         </div>
     )
 }
 
+function className(classId: number) {
+
+    const name = ['Estudante', 'Genin','Chunin','Jounin']
+    
+    return name[classId]
+}
+
+
 export const getStaticProps: GetStaticProps = async () => {
     
-    const prisma = new PrismaClient();
+    try {
+        const { data } = await api.get('ranking')
+        const players = data;
 
-    const data = await prisma.char.findMany()
-
-    const players = data.map(player => {
         return {
-            char_id: player.char_id,
-            name: player.name,
-            class: player.class,
-            base_level: player.base_level,
-            job_level: player.job_level,
-            zeny: player.zeny
+            props: {
+                players
+            },
+            revalidate: 60 * 1 //1m
         }
-    })
+    } catch(err) {
+        
+    }
 
     return {
         props: {
-            players
+
         }
     }
 }

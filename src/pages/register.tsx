@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { api } from '../services/axios';
 
@@ -70,6 +71,9 @@ export default function Register() {
 
     return (
         <div className={styles.container}>
+            <Head>
+                <title>SiteRO | Registrar</title>
+            </Head>
             {accountCreate? (
                 <div>
                     <h1>Account Created</h1>

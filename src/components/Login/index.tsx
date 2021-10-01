@@ -9,11 +9,13 @@ type IFormInput = {
   }
 
 export default function Login() {
-    const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm();
 
-    function handleSignIng({username, password}: IFormInput) {
-        signIn('credentials', { redirect: false, username: username, password: password })
-    }
+  function handleSignIng({username, password}: IFormInput) {
+
+    signIn('credentials', { redirect: false, username: username, password: password })
+
+  }
 
   return (
     <form className={styles.container} onSubmit={handleSubmit(handleSignIng)}>
