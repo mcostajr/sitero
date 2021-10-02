@@ -28,7 +28,7 @@ const Home: NextPage = () => {
           <h5>SOBRE RAGNAROK ONLINE</h5>
         </div>
         <div>
-          <h5>MANUTENCAO E CHANGELOG'S</h5>
+          <h5>MANUTENCAO E CHANGELOG</h5>
         </div>
         <div>
           <h5>REDE SOCIAL</h5>

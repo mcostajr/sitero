@@ -95,7 +95,7 @@ export function NavList() {
   )
 }
 
-function NavItem(props) {
+function NavItem(props: any) {
   return (
     <li className={styles.navigationItem}>
       <Link href={props.href}>
