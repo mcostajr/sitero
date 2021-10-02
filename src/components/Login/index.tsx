@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form";
 import styles from './styles.module.scss'
 
 type IFormInput = {
-    username: string;
-    password: string;
-  }
+  username: string;
+  password: string;
+}
 
 export default function Login() {
   const { register, handleSubmit } = useForm();

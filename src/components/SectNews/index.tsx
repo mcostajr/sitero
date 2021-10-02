@@ -13,7 +13,7 @@ export default function News() {
                     <h3>Novidades</h3>
                 </div>
                 <div className={styles.description}>
-                    <p>dadyeagydegaydgeyagdyegaydgyaegdyeagdadeadadad addddddddddddddddddddddddddddddddddddddddddddddddddddddddddd ddddddddyd</p>
+                    <p>Todas a manutenções realizadas no servidor serão postadas logo abaixo.</p>
                 </div>
                 <div className={styles.listNews}>
                     <div className={styles.itemNews}>
