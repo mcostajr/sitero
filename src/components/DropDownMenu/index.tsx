@@ -32,6 +32,7 @@ export default function DropdownMenu() {
               <NavList/>
             </ul>
           </nav>
+          <hr />
           <div className={styles.secondInfo}>
             {user ? (
               <Profile/>

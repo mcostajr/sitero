@@ -18,19 +18,25 @@ export default function NewsShop() {
                         <Image src='/itens/item.jpg' width={100} height={100}/>
                         <button>R$ 10,00</button>
                         <span>Nome</span>
-                        <p>Descritr aodeadea dheaud hueahdueahu dheau dhaeu ahduea</p>
+                        <div>
+                            <p>Descritr aodeadea dheaud hueahdueahu dheau dhaeu ahduea</p>
+                        </div>
                     </div>
                     <div className={styles.itemShop}>
                         <Image src='/itens/item.jpg' width={100} height={100}/>
                         <button>R$ 10,00</button>
                         <span>Nome</span>
-                        <p>Descritr aodeadea dheaud hueahdueahu dheau dhaeu ahduea</p>
+                        <div>
+                            <p>Descritr aodeadea dheaud hueahdueahu dheau dhaeu ahduea</p>
+                        </div>
                     </div>
                     <div className={styles.itemShop}>
                         <Image src='/itens/item.jpg' width={100} height={100}/>
                         <button>R$ 10,00</button>
                         <span>Nome</span>
-                        <p>Descritr aodeadea dheaud hueahdueahu dheau dhaeu ahduea</p>
+                        <div>
+                            <p>Descritr aodeadea dheaud hueahdueahu dheau dhaeu ahduea</p>
+                        </div>
                     </div>
                 </div>
             </div>

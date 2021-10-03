@@ -26,46 +26,46 @@ export default function Ranking({ players }: RankingType) {
                 <title>SiteRO | Ranking</title>
             </Head>
             <h1>Ranking</h1>
-            <ul className={styles.leaderboard}>
-                <li className={styles.leaderboardHead}>
-                    <div className={styles.position}>
+            <table className={styles.leaderboard}>
+                <th className={styles.leaderboardHeader}>
+                    <td className={styles.position}>
                         <span>Position</span>
-                    </div>
-                    <div className={styles.name}>
+                    </td>
+                    <td className={styles.name}>
                         <span>Name</span>
-                    </div>
-                    <div className={styles.baseLevel}>
+                    </td>
+                    <td className={styles.baseLevel}>
                         <span>Level</span>
-                    </div>
-                    <div className={styles.jobLevel}>
+                    </td>
+                    <td className={styles.jobLevel}>
                         <span>Job</span>
-                    </div>
-                    <div className={styles.class}>
+                    </td>
+                    <td className={styles.class}>
                         <span>Classe</span>
-                    </div>
-                </li>
+                    </td>
+                </th>
                 {players?.map((player,idx) => {
                     return (
-                        <li className={styles.leaderboardItem} key={player.char_id}>
-                            <div className={styles.position}>
+                        <tr className={styles.leaderboardItem} key={player.char_id}>
+                            <td className={styles.position}>
                                 <span>{idx+1}</span>
-                            </div>
-                            <div className={styles.name}>
+                            </td>
+                            <td className={styles.name}>
                                 <span>{player.name}</span>
-                            </div>
-                            <div className={styles.baseLevel}>
+                            </td>
+                            <td className={styles.baseLevel}>
                                 <span>{player.base_level}</span>
-                            </div>
-                            <div className={styles.jobLevel}>
+                            </td>
+                            <td className={styles.jobLevel}>
                                 <span>{player.job_level}</span>
-                            </div>
-                            <div className={styles.class}>
+                            </td>
+                            <td className={styles.class}>
                                 <span>{className(player.class)}</span>
-                            </div>
-                        </li>
+                            </td>
+                        </tr>
                     )
                 })}
-            </ul>
+            </table>
         </div>
     )
 }

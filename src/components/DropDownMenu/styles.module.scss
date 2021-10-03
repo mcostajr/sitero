@@ -20,6 +20,7 @@
         z-index: 1000;
 
         .firstInfo {
+            margin-bottom: 20px;
 
             .listNav{
                 li {
@@ -38,6 +39,19 @@
                     }
                 }
             }
+        }
+
+        hr {
+            border: 0;
+            height: 2px;
+            width: 100%;
+            background-image: linear-gradient(to right, transparent, #CCC, transparent);  
+        }
+
+        .secondInfo {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
 
         &:after {
