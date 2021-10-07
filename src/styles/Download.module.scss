@@ -3,109 +3,115 @@
     flex-direction: column;
     align-items: center;
 
-    .title {
-        display: flex;
-        flex-direction: column;
-        width: 50%;
-        z-index: 1;
-        margin-top: 30px;
+    @media (min-width: 768px) {
+        .wrapper {
+            width: 90%;
+        }
     }
 
+    @media (max-width: 768px) {
+        .wrapper {
+            width: 100%;
+        }
+    }
     .wrapper {
-        flex: 1;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        width: 50%;
-        margin-top: 30px;
 
-        z-index: 1;
-
-        .downloadList {
+        .title {
             display: flex;
-            max-width: 650px;
-            flex-wrap: wrap;
-            gap: 30px;
-            padding-bottom: 20px;
-    
-            .downloadItem {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            margin-top: 30px;
+        }
+
+        .downloadContainer {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+
+            z-index: 1;
+
+            .downloadList {
                 display: flex;
-                width: 300px;
-                height: 150px;
-    
-                padding: 5px;
-                background-color:rgb(255, 255, 255);
-                
-                border: 1px solid rgba(0, 0, 0, 0.171);
-                border-radius: 10px;
-                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.6);
-    
-                img {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 30px;
+                padding-bottom: 30px;
+                max-width: 800px;
+        
+                .downloadItem {
                     display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 100%;
-    
-                    .icon{ 
-                        width: 50px;
-                        height: 50px;
-                    }                
-                }
-                
-                .info {
-                    flex: 1;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 10px;
-    
-                    div {
+                    width: 45%;
+                    height: 150px;
+                    min-width: 320px;
+                    max-width: 400px;
+
+                    background-color:rgb(255, 255, 255);
+                    
+                    padding: 5px;
+                    border: 1px solid rgba(48, 39, 39, 0.171);
+                    border-radius: 10px;
+                    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.6);
+        
+                    .image {
+                        display: flex;
+                        justify-content: center;
+                        width: 45%;
+                    }
+                    
+                    .info {
                         flex: 1;
                         display: flex;
                         flex-direction: column;
-                        justify-content: center;
-    
-                        span {
-                            font-size: 1rem;
-    
-                            &:nth-child(2) {
-                                font-size: 0.8rem;
+                        gap: 10px;
+        
+                        div {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+        
+                            span {
+                                font-size: 1rem;
+        
+                                &:nth-child(2) {
+                                    font-size: 0.8rem;
+                                }
                             }
                         }
-                    }
-                    
-    
-                    .button{
-                        border: 0;
-                        padding: 10px;
-                        border-radius: 10px;
-    
-                        &:hover {
-                            cursor: pointer;
-                            filter: brightness(0.8);
+                        
+        
+                        .button{
+                            border: 0;
+                            padding: 10px;
+                            border-radius: 10px;
+        
+                            &:hover {
+                                cursor: pointer;
+                                filter: brightness(0.8);
+                            }
                         }
                     }
                 }
             }
         }
     }
-
     @media (min-width: 768px) {
         .background {
-             img {
-                position: fixed;
-                top: 100px;
-                right: 0;
-
-                height: 100%;
-             }
+            position: fixed;
+            top: 100px;
+            right: 0;
         }
     }
 
     @media (max-width: 768px) {
         .background {
-             img {
-                 display: none;
-             }
+            display: none;
         }
     }
 }
