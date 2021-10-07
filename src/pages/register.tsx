@@ -4,6 +4,7 @@ import { api } from '../services/axios';
 
 import styles from '../styles/Register.module.scss'
 import { useState } from 'react';
+import Router from 'next/router';
 
 type IFormInput = {
     username: string;
@@ -15,7 +16,6 @@ export default function Register() {
 
     const [ userAvaible, setuserAvaible ] = useState(false);
     const [ passAvaible, setpassAvaible ] = useState(false);
-    const [ accountCreate, setAccountCreate ] = useState(false);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const onSubmit: SubmitHandler<IFormInput> = async ({username, password, email}) => {
@@ -28,7 +28,8 @@ export default function Register() {
                     email: email
                 })
 
-                setAccountCreate(true);
+                Router.push('/download');
+                
             }catch(err) {
                 console.log('Algum erro')
             }
@@ -70,48 +71,63 @@ export default function Register() {
     }
 
     return (
-        <div className={styles.container}>
+        <main className={styles.container}>
             <Head>
                 <title>SiteRO | Registrar</title>
             </Head>
-            {accountCreate? (
-                <div>
-                    <h1>Account Created</h1>
-                    <a onClick={() => setAccountCreate(false)}>Realizar outro cadastro</a>
-                </div>
-            )
-            : 
-            (
-                <form onSubmit={handleSubmit(onSubmit)} className={styles.registerForm}>
-                    <h2>Registrar</h2>
-                    <div>
-                        <span>Username</span>
-                        <div>
-                            <input 
-                                {...register('username')} 
-                                type="text"  
-                                onChange={onChangeUsername}
-                                minLength={4}
-                                maxLength={23}
-                            />
+            <div className={styles.wrapper}>
+                <h2>Registrar</h2>
+                        
+                <div className={styles.registerContainer}>
+                    <form onSubmit={handleSubmit(onSubmit)} className={styles.registerForm}>
+                        <input 
+                            {...register('username')} 
+                            type="text"  
+                            onChange={onChangeUsername}
+                            minLength={4}
+                            maxLength={23}
+                            placeholder="Username"
+                        />
+                        <input 
+                            {...register('password')} 
+                            type="password" 
+                            onChange={onChangePassword} 
+                            minLength={8}
+                            maxLength={32}
+                            placeholder="Senha"
+                        />
+                        <input 
+                            {...register('password')} 
+                            type="password" 
+                            onChange={onChangePassword} 
+                            minLength={8}
+                            maxLength={32}
+                            placeholder="Confirmar Senha"
+                        />
+                        <input 
+                            {...register('email')} 
+                            type="email" 
+                            placeholder="Email"
+                        />
+                        <div className={styles.checkService}>
+                            <input type="checkbox" name="servico" id="servico" />
+                            <span>Confirmar <a>Termos de Serviços</a>.</span>
                         </div>
-
-                        <span>Password</span>
-                        <div>
-                            <input 
-                                {...register('password')} 
-                                type="password" 
-                                onChange={onChangePassword} 
-                                minLength={8}
-                                maxLength={32}
-                            />
-                        </div>
-                        <span>Email</span>
-                        <input {...register('email')} type="email" />
+                        <input className={styles.registerButton} type="submit" value="CRIAR MINHA CONTA" />
+                    </form>
+                    <div className={styles.info}>
+                        <ul>
+                            <li>Sua senha deve ter entre 8 e 31 caracteres.</li>
+                            <li>Sua senha deve conter pelo menos 1 letra(s) maiúscula.</li>
+                            <li>Sua senha deve conter pelo menos 1 letra(s) minúsculas.</li>
+                            <li>Sua senha deve conter pelo menos 1 número(s).</li>
+                        </ul>
                     </div>
-                    <input type="submit" value="Registrar" />
-                </form>
-            )}
-        </div>
+                </div>
+            </div>
+            <div className={styles.background}>
+                <img src="register.png" alt="register" />
+            </div>
+        </main>
     )
 }

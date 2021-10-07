@@ -1,8 +1,6 @@
 import NextAuth from "next-auth"
 import Providers from "next-auth/providers"
-import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { PrismaClient } from '@prisma/client'
-import { session } from "next-auth/client"
 
 const prisma = new PrismaClient()
 
@@ -28,17 +26,19 @@ export default NextAuth({
           } else {
             return null
           }
-        }finally{
-          async () =>{ 
-            await prisma.$disconnect() 
-          }
+        }catch(err) {
+          return null;
+        }finally {
+          await prisma.$disconnect();
         }
       }
     }),
   ],
-  // adapter: PrismaAdapter(prisma),
+  session: {
+    maxAge: 60 * 60 * 24 // 1 Dia
+  },
   callbacks: {
-    jwt: async (token, user) => {
+    async jwt(token, user, account) {
       if (user) {
         token.name = user.userid as string;
       }

@@ -1,6 +1,5 @@
 import type { AppProps } from 'next/app'
-import { getSession, Provider } from "next-auth/client"
-import { GetServerSideProps } from 'next'
+import { Provider } from "next-auth/client"
 
 import Header from '../components/Header'
 import LoginProvider from '../contexts/LoginContext'
@@ -23,13 +22,3 @@ function MyApp({ Component, pageProps}: AppProps) {
   )
 }
 export default MyApp
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-
-  const session = await getSession(ctx)
-  return {
-    props: {
-      session
-    }
-  }
-}

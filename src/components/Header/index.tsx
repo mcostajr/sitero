@@ -18,9 +18,11 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      window.scrollY > divRef.current!.getBoundingClientRect().bottom
-        ? setSticky(true)
-        : setSticky(false)
+        if(divRef.current!.getBoundingClientRect().width > 768) {
+          window.scrollY > divRef.current!.getBoundingClientRect().bottom
+          ? setSticky(true)
+          : setSticky(false)
+        }
     }
   
     window.addEventListener('scroll', handleScroll);
@@ -108,12 +110,10 @@ function NavItem(props: any) {
 function NavBar() {
   
   return (
-    <div className={styles.navigation}>
-      <nav className={styles.navigationBase}>
-        <ul className={styles.navigationList}>
-          <NavList/>
-        </ul>
-      </nav>
-    </div>
+    <nav className={styles.navigation}>
+      <ul className={styles.navigationList}>
+        <NavList/>
+      </ul>
+    </nav>
   )
 }

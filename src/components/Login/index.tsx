@@ -1,4 +1,5 @@
 import { signIn } from "next-auth/client";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import styles from './styles.module.scss'
@@ -10,15 +11,24 @@ type IFormInput = {
 
 export default function Login() {
   const { register, handleSubmit } = useForm();
+  const [ invalidCredential, setInvalidCredential ] = useState(false);
 
-  function handleSignIng({username, password}: IFormInput) {
-
-    signIn('credentials', { redirect: false, username: username, password: password })
+  async function handleSignIng({username, password}: IFormInput) {
+    const res = await signIn('credentials', { redirect: false, username: username, password: password })
+    
+    if(res?.error == "CredentialsSignin") {
+      setInvalidCredential(true);
+    }
 
   }
 
   return (
     <form className={styles.container} onSubmit={handleSubmit(handleSignIng)}>
+      {invalidCredential && 
+        <div className={styles.credencialInvalid}>
+          <span>Credencial Invalida, verifique se você digitou as informações corretas e tente novamente.</span>
+        </div>
+      }
       <div className={styles.information}>
           <div className={styles.userWrapper}>
               <span>Login</span>

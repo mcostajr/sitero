@@ -17,7 +17,8 @@
     .wrapper {
         display: flex;
         align-items: center;
-        width: 80%;
+        width: 90%;
+        gap: 40px;
 
         .logo {
             position: relative;
@@ -30,50 +31,38 @@
 
         .navigation {
             flex: 1;
-            display: flex;
-            align-items: center;
 
-            .navigationBase {
+            .navigationList {
                 display: flex;
-                width: 100%;
+                flex-direction: row;
+                align-items: center;
                 gap: 10px;
 
-                .navigationList {
-                    flex: 1;
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    gap: 10px;
+                .navigationItem {
+                    a {
+                        font-weight: 600;
+                        font-size: 1rem;
 
-                    .navigationItem {
-
-                        a {
-                            font-weight: 600;
-                            font-size: 1rem;
-
-                            &:hover {
-                                border-bottom: 1px solid white;
-                            }
+                        &:hover {
+                            border-bottom: 1px solid white;
                         }
                     }
                 }
             }
-
         }
 
         .login {
             display: flex;
-            gap: 10px;
-            margin-right: 50px;
+            gap: 5px;
             
             .avatar {
-                height: 24px;
-                width: 24px;
+                height: 1.5rem;
+                width: 1.5rem;
             }
     
             .buttonDropDownLogin {
-                height: 24px;
-                width: 24px;
+                height: 1.5rem;
+                width: 1.5rem;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -98,6 +87,8 @@
                 padding: 10px;
                 background: 0;
                 border: 0;
+                height: 43px;
+                width: 43px;
 
                 .icon {
                     height: 23px;
@@ -112,18 +103,18 @@
             }
         }
 
-        @media (min-width: 1001px) {
+        @media (min-width: 769px) {
             .containerButtonMenu { display: none; }
         }
 
-        @media (max-width: 1000px) {
+        @media (max-width: 768px) {
             .navigation { display: none; }
             .login { display: none; }
         }
     }
 }
   
-@media (min-width: 1000px) {
+@media (min-width: 768px) {
     .sticky {
         height: 50px;
         width: 100%;

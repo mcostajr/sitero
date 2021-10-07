@@ -11,18 +11,18 @@ import styles from '../styles/Home.module.scss';
 const Home: NextPage = () => {
   
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>SiteRO</title>
-      </Head>
+    <>
+      <main className={styles.container}>
+        <Head>
+          <title>SiteRO</title>
+        </Head>
 
-      <main>
-        <Banners/>
-        <Info/>
-        <News/>
-        <NewsShop/>
+          <Banners/>
+          <Info/>
+          <News/>
+          <NewsShop/>
+
       </main>
-
       <footer className={styles.footer}>
         <div>
           <h5>SOBRE RAGNAROK ONLINE</h5>
@@ -34,8 +34,7 @@ const Home: NextPage = () => {
           <h5>REDE SOCIAL</h5>
         </div>
       </footer>
-
-    </div>
+    </>
   )
 }
 

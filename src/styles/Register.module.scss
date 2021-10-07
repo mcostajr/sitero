@@ -1,23 +1,83 @@
 .container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    
+    .wrapper {
+        width: 80%;
+        z-index: 1;
+        
+        .registerContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
 
-    .registerForm {
-        display: flex;
-        flex-direction: column;
+            .registerForm {
+                display: flex;
+                flex-direction: column;
+        
+                width: 200px;
+    
+        
+                gap: 10px;
+        
+                input {
+                    height: 2rem;
+                    border: 1px solid rgba(0, 0, 0, 0.2);
+                    border-radius: 5px;
+                    padding: 5px;
+                }
 
-        width: 200px;
-        margin-top: 150px;
+                .registerButton{
+                    background-color: #6935e5;
+                    border: 0;
 
-        gap: 10px;
+                    font-weight: 600;
+                    font-size: 0.7rem;
+                    color: #fff;
 
-        div {
-            div {
-                span {
-                    color: blue;
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    &:active {
+                        filter: brightness(0.8);
+                    }
+                }
+
+                .checkService{
+                    display: flex;
+                    align-items: center;
+
+                    span {
+                        font-size: 0.8rem;
+                    }
                 }
             }
+
+            .info {
+
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+        .background {
+             img {
+                position: fixed;
+                top: 100px;
+                right: 0;
+
+                height: 100%;
+             }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .background {
+             img {
+                 display: none;
+             }
         }
     }
 }
