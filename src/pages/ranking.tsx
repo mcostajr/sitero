@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import { GetStaticProps } from 'next'
-import { PrismaClient } from '@prisma/client'
 
 import styles from '../styles/Ranking.module.scss'
 import { api } from '../services/axios'
+import { useEffect, useRef, useState } from 'react';
 
 type Player = {
     char_id: number;
@@ -19,6 +19,26 @@ type RankingType = {
 }
 
 export default function Ranking({ players }: RankingType) {
+
+
+    const [ sticky, setSticky ] = useState(false);
+    const liRef = useRef<HTMLLIElement>(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if(liRef.current!.getBoundingClientRect().width > 768) {
+                window.scrollY > liRef.current!.getBoundingClientRect().bottom
+                ? setSticky(true)
+                : setSticky(false)
+            }
+        }
+      
+        window.addEventListener('scroll', handleScroll);
+        
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        }
+    })
 
     const ranking: Player[] = [
         { char_id: 1, name: 'Teste 1', class: 0, base_level: 100, job_level: 10, zeny: 100 },
@@ -71,7 +91,7 @@ export default function Ranking({ players }: RankingType) {
                         </ul>
                     </nav>
                     <ul className={styles.leaderboard}>
-                        <li className={`${styles.leaderboardItems} ${styles.leaderboardHeader}`}>
+                        <li className={`${styles.leaderboardItems} ${sticky ? styles.sticky: ''}`} ref={liRef}>
                             <div className={styles.position}>
                                 <span>Position</span>
                             </div>

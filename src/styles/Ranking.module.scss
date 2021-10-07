@@ -25,6 +25,12 @@
                 display: flex;
                 flex-direction: column;
 
+                .sticky {
+                    position: sticky;
+                    background-color: #fff;
+                    top: 50px;
+                }
+
                 .leaderboardItems {
                     display: flex;
 
