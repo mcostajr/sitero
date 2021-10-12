@@ -1,6 +1,7 @@
-import Image from 'next/image'
-import { FaStar } from 'react-icons/fa'
 import styles from './styles.module.scss'
+import { FaStar } from 'react-icons/fa'
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
+import Image from 'next/image'
 
 export default function NewsShop() {
     return (
@@ -14,7 +15,7 @@ export default function NewsShop() {
                     <p>Confira nossas ultimas novidades</p>
                 </div>
                 <div className={styles.sliderShop}>
-                    <button className={styles.button}>{'<'}</button>
+                    <button className={styles.button}><AiOutlineLeft/></button>
                     <ul className={styles.listShop}>
                         <li className={styles.itemShop}>
                             <Image src='/itens/1.bmp' width='75px' height='100px'/>
@@ -49,7 +50,7 @@ export default function NewsShop() {
                             </div>
                         </li>
                     </ul>
-                    <button className={styles.button}>{'>'}</button>
+                    <button className={styles.button}><AiOutlineRight/></button>
                 </div>
             </div>
         </section>
