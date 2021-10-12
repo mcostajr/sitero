@@ -16,9 +16,6 @@ export default function Header() {
   const [isSticky, setSticky] = useState(false);
   const divRef = useRef<HTMLDivElement>(null)
 
-  const { user } = useContext(LoginContext);
-  const { toggleMenuLogin } = useContext(MenuContext)
-
   useEffect(() => {
     const handleScroll = () => {
         if(divRef.current!.getBoundingClientRect().width > 768) {
@@ -97,7 +94,7 @@ function ProfInfo() {
   )
 }
 
-function NavItem(props: any) {
+export function NavItem(props: any) {
   return (
     <li className={styles.navigationItem}>
       <Link href={props.href}>

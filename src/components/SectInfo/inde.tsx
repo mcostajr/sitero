@@ -13,10 +13,10 @@ export default function Info() {
                 </div>
                 <div className={styles.image}>
                     <Image 
+                        alt="info"
                         src="/info.png"
                         width={250}
                         height={250}
-                        
                     />
                 </div>
                 <div className={styles.acess}>
@@ -25,8 +25,8 @@ export default function Info() {
                         <input type="text" placeholder="Username"/>
                         <input type="password" placeholder="Password"/>
                         <div>
-                            <a href="/">Esqueci a Senha</a>
-                            <a href="/">Registrar-se</a>
+                            <a>Esqueci a Senha</a>
+                            <a>Registrar-se</a>
                         </div>
                         <button>FAZER LOGIN</button>
                     </form>

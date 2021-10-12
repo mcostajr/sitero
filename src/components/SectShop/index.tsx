@@ -18,7 +18,7 @@ export default function NewsShop() {
                     <button className={styles.button}><AiOutlineLeft/></button>
                     <ul className={styles.listShop}>
                         <li className={styles.itemShop}>
-                            <Image src='/itens/1.bmp' width='75px' height='100px'/>
+                            <Image alt="1" src='/itens/1.bmp' width='75px' height='100px'/>
                             <button>R$ 10,00</button>
                             <span>Chapeu Poring</span>
                             <div>
@@ -26,7 +26,7 @@ export default function NewsShop() {
                             </div>
                         </li>
                         <li className={styles.itemShop}>
-                            <Image src='/itens/2.bmp' width='75px' height='100px'/>
+                            <Image alt="2" src='/itens/2.bmp' width='75px' height='100px'/>
                             <button>R$ 10,00</button>
                             <span>Elmo Ghost</span>
                             <div>
@@ -34,7 +34,7 @@ export default function NewsShop() {
                             </div>
                         </li>
                         <li className={styles.itemShop}>
-                            <Image src='/itens/3.bmp' width='75px' height='100px'/>
+                            <Image alt="3" src='/itens/3.bmp' width='75px' height='100px'/>
                             <button>R$ 10,00</button>
                             <span>Laços Vermelho</span>
                             <div>
@@ -42,7 +42,7 @@ export default function NewsShop() {
                             </div>
                         </li>
                         <li className={styles.itemShop}>
-                            <Image src='/itens/4.bmp' width='75px' height={100}/>
+                            <Image alt="4" src='/itens/4.bmp' width='75px' height={100}/>
                             <button>R$ 10,00</button>
                             <span>Headset Coelhinho</span>
                             <div>

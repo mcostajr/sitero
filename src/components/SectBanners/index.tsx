@@ -10,13 +10,14 @@ export default function Banners() {
         <div className={styles.wrapper}>
           <div className={styles.subWrapper}>
             <h1>PARTICIPE DA NOSSA COMUNIDADE</h1>
-            <Link href="/register"><button>PARTICIPAR AGORA</button></Link>
+            <Link href="/register" passHref><button>PARTICIPAR AGORA</button></Link>
           </div>
           <div className={styles.logos}>
             <Image
               layout="fill"
               objectFit="cover"
               src="/capa.png"
+              alt="capa"
             />
           </div>
         </div>
