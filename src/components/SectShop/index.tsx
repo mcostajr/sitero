@@ -11,33 +11,45 @@ export default function NewsShop() {
                     <h3>Loja</h3>
                 </div>
                 <div className={styles.description}>
-                    <p>Novidades da nossa Loja de Cash, esses são algumas das novidades.</p>
+                    <p>Confira nossas ultimas novidades</p>
                 </div>
-                <div className={styles.listShop}>
-                    <div className={styles.itemShop}>
-                        <Image src='/itens/item.jpg' width={100} height={100}/>
-                        <button>R$ 10,00</button>
-                        <span>Nome</span>
-                        <div>
-                            <p>Descritr aodeadea dheaud hueahdueahu dheau dhaeu ahduea</p>
-                        </div>
-                    </div>
-                    <div className={styles.itemShop}>
-                        <Image src='/itens/item.jpg' width={100} height={100}/>
-                        <button>R$ 10,00</button>
-                        <span>Nome</span>
-                        <div>
-                            <p>Descritr aodeadea dheaud hueahdueahu dheau dhaeu ahduea</p>
-                        </div>
-                    </div>
-                    <div className={styles.itemShop}>
-                        <Image src='/itens/item.jpg' width={100} height={100}/>
-                        <button>R$ 10,00</button>
-                        <span>Nome</span>
-                        <div>
-                            <p>Descritr aodeadea dheaud hueahdueahu dheau dhaeu ahduea</p>
-                        </div>
-                    </div>
+                <div className={styles.sliderShop}>
+                    <button className={styles.button}>{'<'}</button>
+                    <ul className={styles.listShop}>
+                        <li className={styles.itemShop}>
+                            <Image src='/itens/1.bmp' width='75px' height='100px'/>
+                            <button>R$ 10,00</button>
+                            <span>Chapeu Poring</span>
+                            <div>
+                                <p>Descritr aodeadea dheaud hueahdueahu dheau dhaeu ahduea</p>
+                            </div>
+                        </li>
+                        <li className={styles.itemShop}>
+                            <Image src='/itens/2.bmp' width='75px' height='100px'/>
+                            <button>R$ 10,00</button>
+                            <span>Elmo Ghost</span>
+                            <div>
+                                <p>Descritr aodeadea dheaud hueahdueahu dheau dhaeu ahduea</p>
+                            </div>
+                        </li>
+                        <li className={styles.itemShop}>
+                            <Image src='/itens/3.bmp' width='75px' height='100px'/>
+                            <button>R$ 10,00</button>
+                            <span>Laços Vermelho</span>
+                            <div>
+                                <p>Descritr aodeadea dheaud hueahdueahu dheau dhaeu ahduea</p>
+                            </div>
+                        </li>
+                        <li className={styles.itemShop}>
+                            <Image src='/itens/4.bmp' width='75px' height={100}/>
+                            <button>R$ 10,00</button>
+                            <span>Headset Coelhinho</span>
+                            <div>
+                                <p>Descritr aodeadea dheaud hueahdueahu dheau dhaeu ahduea</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <button className={styles.button}>{'>'}</button>
                 </div>
             </div>
         </section>

@@ -1,18 +1,39 @@
-html,
-body {
+:root {
+  --background: #121214;
+  --white: #fff;
+  --title-100: #747474;
+  --title-200: #2F2F2F;
+  --text-100: #BBBBBB;
+  --text-200: #666666;
+  --blue-100: #708FFF;
+  --background-menu: #4d5bf9;
+}
+
+@media(max-width: 1080px) {
+  html {
+      font-size: 93.75%;
+  }
+}
+
+@media(max-width: 768px) {
+  html {
+      font-size: 87.5%;
+  }
+}
+
+* {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  box-sizing: border-box;
+}
+
+body, input, textarea, button {
+  font: 400 1rem "Inter", sans-serif;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 ul {
@@ -21,6 +42,6 @@ ul {
   padding: 0
 }
 
-:root {
-  
+button {
+  cursor: pointer;
 }

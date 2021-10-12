@@ -1,72 +1,58 @@
 .container {
+    height: 650px;
+
+    background-image: url('/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
 
     .wrapper {
-        z-index: 1;
+        display: flex;
+        justify-content: center;
+        height: 100%;
 
-        .slider {
+        .subWrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
 
-            .banner {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
+            z-index: 1;
 
-                max-height: 600px;
-                height: 50vh;
-                width: 100%;
-
-                background-clip: border-box;
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: cover;
-
-                .infoContainer {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: space-around;
-
-                    height: 100%;
-                    width: 80%;
-                    color: white;
-                    text-shadow: rgb(0, 0, 0);
-
-                    .title {
-                        display: flex;
-                        flex-direction: column;
-                        text-align: center;
-                        font-size: 2.5rem;
-                        font-weight: 700;
-
-                        text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-
-                    }
-
-                    .buttonContainer {
-                        display: flex;
-                        align-items: center;
-
-                        button {
-                            border: 0;
-                            border-radius: 20px;
-                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-                            background-color: rgb(115, 100, 255);
+            h1 {
+                font-size: 3rem;
+                color: var(--white);
+                transform: translateY(-150px);
+            }
     
-                            padding: 20px 20px;
+            button {
+                border: 0;
+                border-radius: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                background-color: var(--blue-100);
     
-                            cursor: pointer;
-                            
-                            font-weight: 600;
-                            font-size: 0.8rem;
-                            color: #fff;
+                padding: 20px 20px;
     
-                            &:active {
-                                filter:brightness(0.8);
-                            }
-                        }
-                    }
+                cursor: pointer;
+                
+                font-weight: 600;
+                font-size: 0.8rem;
+                color: #fff;
+    
+                &:active {
+                    filter:brightness(0.8);
                 }
             }
+        }
+
+        .logos {
+            position: absolute;
+            width: 681px;
+            height: 535px;
+
+            right: 50px;
+            transform: translateY(115px);
         }
     }
 }

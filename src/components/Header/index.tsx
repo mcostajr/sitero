@@ -16,6 +16,9 @@ export default function Header() {
   const [isSticky, setSticky] = useState(false);
   const divRef = useRef<HTMLDivElement>(null)
 
+  const { user } = useContext(LoginContext);
+  const { toggleMenuLogin } = useContext(MenuContext)
+
   useEffect(() => {
     const handleScroll = () => {
         if(divRef.current!.getBoundingClientRect().width > 768) {
@@ -39,11 +42,22 @@ export default function Header() {
           <Image
             src="/logo.png"
             alt="logo"
-            layout="fill"
+            layout='fill'
+            objectFit="contain"
             className={styles.image}
           />
         </div>
-        <NavBar/>
+        <nav className={styles.navigation}>
+          <ul className={styles.navigationList}>
+            <NavItem href="/">Inicio</NavItem>
+            <NavItem href="/download">Downloads</NavItem>
+            <NavItem href="/info">Info</NavItem>
+            <NavItem href="/ranking">Ranking</NavItem>
+            <NavItem href="/donation">Doações</NavItem>
+            <NavItem href="/register">Registrar</NavItem>
+            <NavItem href="/forum">Forum</NavItem>
+          </ul>
+        </nav>
         <ProfInfo/>
         <ButtonMenu/>
         <DropdownMenu/>
@@ -83,20 +97,6 @@ function ProfInfo() {
   )
 }
 
-export function NavList() {
-  return (
-    <>
-      <NavItem href="/">Inicio</NavItem>
-      <NavItem href="/download">Downloads</NavItem>
-      <NavItem href="/ranking">Ranking</NavItem>
-      <NavItem href="/donation">Doações</NavItem>
-      <NavItem href="/register">Registrar</NavItem>
-      <NavItem href="/forum">Forum</NavItem>
-      <NavItem href="/support">Suporte</NavItem>
-    </>
-  )
-}
-
 function NavItem(props: any) {
   return (
     <li className={styles.navigationItem}>
@@ -104,16 +104,5 @@ function NavItem(props: any) {
         <a>{props.children}</a>
       </Link>
     </li>
-  )
-}
-
-function NavBar() {
-  
-  return (
-    <nav className={styles.navigation}>
-      <ul className={styles.navigationList}>
-        <NavList/>
-      </ul>
-    </nav>
   )
 }

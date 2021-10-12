@@ -22,9 +22,7 @@
 
         .logo {
             position: relative;
-            display: flex;
-            align-items: center;
-            min-width: 200px;
+            width: 150px;
             height: 100px;
             transition: all .5s;
         }
@@ -123,7 +121,7 @@
         .wrapper {
             .logo {
                 height: 50px;
-                min-width: 100px;
+                width: 100px;
                 transition: all .5s;
             }
         }
