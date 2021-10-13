@@ -1,10 +1,10 @@
 .container {
-    position: sticky;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    height: 100px;
+    height: 10vh;
     width: 100%;
 
     background-color: rgb(43, 34, 34);
@@ -23,10 +23,8 @@
 
         .logo {
             position: relative;
-            width: 150px;
-            height: 100px;
-            min-width: 150px;
-            min-height: 100px;
+            width: 100px;
+            height: 10vh;
             transition: all .5s;
         }
 
@@ -118,16 +116,7 @@
   
 @media (min-width: 1023px) {
     .sticky {
-        height: 50px;
-        width: 100%;
-        transition: all .5s;
-    
-        .wrapper {
-            .logo {
-                height: 50px;
-                width: 100px;
-                transition: all .5s;
-            }
-        }
+        position: sticky;
+        transition: all 2s;
     }
 }

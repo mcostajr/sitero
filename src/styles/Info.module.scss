@@ -1,0 +1,101 @@
+.container {
+    display: flex;
+    justify-content: center;
+
+    height: 90vh;
+
+    .background {
+        position: absolute;
+        background-color: #00ADB8;
+        height: 365px;
+        width: 100%;
+    }
+
+    .wrapper {
+        position: relative;
+        display: flex;
+        height: 100%;
+        width: 100%;
+
+        .aventureiro {
+            position: relative;
+            width: 350px;
+            height: 100%;
+        }
+
+        .information {
+            flex: 1;
+
+            h1 {
+                padding-top: 20px;
+                font-size: 2rem;
+                color: var(--title-200);
+            }
+
+
+            .ballonList {
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+                padding: 2rem 0;
+                
+                .ballon {
+                    padding: 20px;
+                    min-width: 300px;
+                    border: 0;
+                    border-radius: 20px;
+                    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+
+                    background-color: var(--white);
+
+                    &:nth-last-child(even) {
+                        min-height: 130px;
+                        border-radius: 20px 20px 0px 20px;
+                    }
+
+                    &:nth-last-child(odd) {
+                        min-height: 110px;
+
+                        &:first-child {
+                            border-radius: 20px 20px 20px 0px;
+                        }
+                        
+                        &:last-child {
+                        border-radius: 0px 20px 20px 20px;
+                        }
+                    }
+
+                    h2 {
+                        font-size: 1.2rem;
+                        color: var(--title-200);
+                    }
+
+                    ul {
+                        margin-left: 20px;
+                        li {
+                            span {
+                                font-size: 0.8rem;
+                                color: var(--text-200);
+                            }
+                        }
+                    }
+                   
+
+                    .eventsList{
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        flex-wrap: wrap;
+
+                        max-height: 100px;
+
+                        li {
+                        }
+                    }
+                    
+
+                }
+            }
+        }
+    }
+}

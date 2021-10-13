@@ -19,9 +19,10 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
         if(divRef.current!.getBoundingClientRect().width > 768) {
-          window.scrollY > divRef.current!.getBoundingClientRect().bottom
+          (window.scrollY > divRef.current!.getBoundingClientRect().height + 550
           ? setSticky(true)
-          : setSticky(false)
+          : setSticky(false))
+
         }
     }
   
