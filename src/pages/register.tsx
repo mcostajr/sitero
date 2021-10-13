@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { api } from '../services/axios';
 
@@ -75,58 +76,54 @@ export default function Register() {
             <Head>
                 <title>SiteRO | Registrar</title>
             </Head>
-            <div className={styles.wrapper}>
-                <h2>Registrar</h2>
-                        
-                <div className={styles.registerContainer}>
-                    <form onSubmit={handleSubmit(onSubmit)} className={styles.registerForm}>
-                        <input 
-                            {...register('username')} 
-                            type="text"  
-                            onChange={onChangeUsername}
-                            minLength={4}
-                            maxLength={23}
-                            placeholder="Username"
+            <div className={styles.background}>
+                <div className={styles.wrapper}>
+                    <h2>REGISTRO</h2>
+                    <div className={styles.registerContainer}>
+                        <form onSubmit={handleSubmit(onSubmit)} className={styles.registerForm}>
+                            <input 
+                                {...register('username')} 
+                                type="text"  
+                                onChange={onChangeUsername}
+                                minLength={4}
+                                maxLength={23}
+                                placeholder="Username"
+                            />
+                            <input 
+                                {...register('password')} 
+                                type="password" 
+                                onChange={onChangePassword} 
+                                minLength={8}
+                                maxLength={32}
+                                placeholder="Senha"
+                            />
+                            <input 
+                                {...register('password')} 
+                                type="password" 
+                                onChange={onChangePassword} 
+                                minLength={8}
+                                maxLength={32}
+                                placeholder="Confirmar Senha"
+                            />
+                            <input 
+                                {...register('email')} 
+                                type="email" 
+                                placeholder="Email"
+                            />
+                            <div className={styles.checkService}>
+                                <input type="checkbox" name="servico" id="servico" />
+                                <span>Confirmar <a>Termos de Serviços</a>.</span>
+                            </div>
+                            <input className={styles.registerButton} type="submit" value="CRIAR MINHA CONTA" />
+                        </form>
+                        <Image 
+                            src="/surtr.png"
+                            alt="surt"
+                            width={500}
+                            height={500}
                         />
-                        <input 
-                            {...register('password')} 
-                            type="password" 
-                            onChange={onChangePassword} 
-                            minLength={8}
-                            maxLength={32}
-                            placeholder="Senha"
-                        />
-                        <input 
-                            {...register('password')} 
-                            type="password" 
-                            onChange={onChangePassword} 
-                            minLength={8}
-                            maxLength={32}
-                            placeholder="Confirmar Senha"
-                        />
-                        <input 
-                            {...register('email')} 
-                            type="email" 
-                            placeholder="Email"
-                        />
-                        <div className={styles.checkService}>
-                            <input type="checkbox" name="servico" id="servico" />
-                            <span>Confirmar <a>Termos de Serviços</a>.</span>
-                        </div>
-                        <input className={styles.registerButton} type="submit" value="CRIAR MINHA CONTA" />
-                    </form>
-                    <div className={styles.info}>
-                        <ul>
-                            <li>Sua senha deve ter entre 8 e 31 caracteres.</li>
-                            <li>Sua senha deve conter pelo menos 1 letra(s) maiúscula.</li>
-                            <li>Sua senha deve conter pelo menos 1 letra(s) minúsculas.</li>
-                            <li>Sua senha deve conter pelo menos 1 número(s).</li>
-                        </ul>
                     </div>
                 </div>
-            </div>
-            <div className={styles.background}>
-                <img src="register.png" alt="register" />
             </div>
         </main>
     )

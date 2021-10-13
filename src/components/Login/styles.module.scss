@@ -7,29 +7,29 @@
     .information {
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 10px;
+        
+        input {
+            height: 30px;
+            border: 0;
+            border-radius: 5px;
+            padding: 10px 5px;
+            font-size: 0.9rem;
 
-        .userWrapper {
-            display: flex;
-            flex-direction: column;
-
-            span {
-                font-size: 0.8rem;
-            }
-        }
-
-        .passWrapper {
-            display: flex;
-            flex-direction: column;
-
-            span {
-                font-size: 0.8rem;
+            &:focus {
             }
         }
     }
 
-    .buttons {
+    .register {
         display: flex;
         justify-content: space-between;
+        font-size: 0.9rem;
+    }
+
+    button {
+        height: 30px;
+        border: 0;
+        border-radius: 5px;
     }
 }

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from 'react';
 import { LoginContext } from '../../contexts/LoginContext';
 import { MenuContext } from '../../contexts/MenuContext';
-import { NavItem } from '../Header';
+import { NavList } from '../Header';
 import Login from '../Login';
 import Profile from '../Profile';
 
@@ -29,13 +29,7 @@ export default function DropdownMenu() {
         <aside className={styles.container} ref={divRef}>
           <nav className={styles.firstInfo}>
             <ul className={styles.listNav}>
-              <NavItem href="/">Inicio</NavItem>
-              <NavItem href="/download">Downloads</NavItem>
-              <NavItem href="/info">Info</NavItem>
-              <NavItem href="/ranking">Ranking</NavItem>
-              <NavItem href="/donation">Doações</NavItem>
-              <NavItem href="/register">Registrar</NavItem>
-              <NavItem href="/forum">Forum</NavItem>
+              <NavList/>
             </ul>
           </nav>
           <hr />

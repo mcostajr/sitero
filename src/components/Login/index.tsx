@@ -1,5 +1,6 @@
+import React, { useState } from "react";
+import Link from 'next/link';
 import { signIn } from "next-auth/client";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import styles from './styles.module.scss'
@@ -30,19 +31,14 @@ export default function Login() {
         </div>
       }
       <div className={styles.information}>
-          <div className={styles.userWrapper}>
-              <span>Login</span>
-              <input {...register('username')} type="text" placeholder='Username'/>
-          </div>
-          <div className={styles.passWrapper}>
-              <span>Senha</span>
-              <input {...register('password')} type="password" placeholder='Password' />
-          </div>
+        <input {...register('username')} type="text" placeholder='Username'/>
+        <input {...register('password')} type="password" placeholder='Password' />
       </div>
-      <div className={styles.buttons}>
-          <a href="">Esqueci senha</a>
-          <input type="submit" value="Login"/>
+      <div className={styles.register}>
+        <Link href="/"><a>Esqueci senha</a></Link>
+        <Link href="/register"><a>Cadastrar-se</a></Link>
       </div>
+      <button>Login</button>
     </form>
   )
 }

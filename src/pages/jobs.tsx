@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import styles from 'styles.module.scss'
 
-export default function Support() {
+export default function Jobs() {
     return (
         <div>
             <Head>
-                <title>SiteRO | Suporte</title>
+                <title>SiteRO | Classes</title>
             </Head>
-            <h1>Suporte</h1>
+            <h1>Classes</h1>
         </div>
     )
 }

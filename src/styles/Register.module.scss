@@ -1,83 +1,81 @@
 .container {
-    display: flex;
-    justify-content: center;
     
-    .wrapper {
-        width: 80%;
-        z-index: 1;
-        
-        .registerContainer {
+    .background {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 365px;
+        background-color: #00ADB8;
+
+        .wrapper {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
-
-            .registerForm {
-                display: flex;
-                flex-direction: column;
-        
-                width: 200px;
+            flex-direction: column;
+            height: 575px;
+            width: 98%;
+            max-width: 1200px;
+            border: 0;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            background-color: var(--white);
     
-        
-                gap: 10px;
-        
-                input {
-                    height: 2rem;
-                    border: 1px solid rgba(0, 0, 0, 0.2);
-                    border-radius: 5px;
-                    padding: 5px;
-                }
-
-                .registerButton{
-                    background-color: #6935e5;
-                    border: 0;
-
-                    font-weight: 600;
-                    font-size: 0.7rem;
-                    color: #fff;
-
-                    &:hover {
-                        cursor: pointer;
-                    }
-
-                    &:active {
-                        filter: brightness(0.8);
-                    }
-                }
-
-                .checkService{
+            transform: translateY(15%);
+            z-index: 1;
+    
+            h2 {
+                text-align: center;
+                font-size: 2.25rem;
+                color: var(--title-200);
+    
+                margin-top: 40px;
+            }
+            
+            .registerContainer {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+    
+                .registerForm {
                     display: flex;
-                    align-items: center;
-
-                    span {
-                        font-size: 0.8rem;
+                    flex-direction: column;
+                    width: 300px;
+                    gap: 20px;
+            
+                    input {
+                        height: 50px;
+                        border: 1px solid black;
+                        border-radius: 5px;
+                        padding: 5px 10px;
+                    }
+    
+                    .checkService{
+                        display: flex;
+                        gap: 10px;
+                        align-items: center;
+                        height: 0.8rem;
+    
+                        span {
+                            font-size: 0.8rem;
+                        }
+                    }
+    
+                    .registerButton{
+                        background-color: #6935e5;
+                        border: 0;
+    
+                        font-weight: 600;
+                        font-size: 0.7rem;
+                        color: #fff;
+                        cursor: pointer;
+    
+                        &:active {
+                            filter: brightness(0.8);
+                        }
                     }
                 }
+
+                
             }
-
-            .info {
-
-            }
-        }
-    }
-
-    @media (min-width: 768px) {
-        .background {
-             img {
-                position: fixed;
-                top: 100px;
-                right: 0;
-
-                height: 100%;
-             }
-        }
-    }
-
-    @media (max-width: 768px) {
-        .background {
-             img {
-                 display: none;
-             }
         }
     }
 }

@@ -46,13 +46,7 @@ export default function Header() {
         </div>
         <nav className={styles.navigation}>
           <ul className={styles.navigationList}>
-            <NavItem href="/">Inicio</NavItem>
-            <NavItem href="/download">Downloads</NavItem>
-            <NavItem href="/info">Info</NavItem>
-            <NavItem href="/ranking">Ranking</NavItem>
-            <NavItem href="/donation">Doações</NavItem>
-            <NavItem href="/register">Registrar</NavItem>
-            <NavItem href="/forum">Forum</NavItem>
+            <NavList/>
           </ul>
         </nav>
         <ProfInfo/>
@@ -101,5 +95,19 @@ export function NavItem(props: any) {
         <a>{props.children}</a>
       </Link>
     </li>
+  )
+}
+
+export function NavList() {
+  return (
+    <>
+      <NavItem href="/">Inicio</NavItem>
+      <NavItem href="/download">Downloads</NavItem>
+      <NavItem href="/info">Info</NavItem>
+      <NavItem href="/ranking">Ranking</NavItem>
+      <NavItem href="/donation">Doações</NavItem>
+      <NavItem href="/register">Registrar</NavItem>
+      <NavItem href="/jobs">Classes</NavItem>
+    </>
   )
 }

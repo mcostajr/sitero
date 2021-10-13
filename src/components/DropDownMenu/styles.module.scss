@@ -9,7 +9,6 @@
         position: fixed;
         display: flex;
         flex-direction: column;
-        gap: 10px;
         
         top: 100px;
         right: 0px;
@@ -20,14 +19,18 @@
         z-index: 1000;
 
         .firstInfo {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
 
             .listNav{
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+
                 li {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    height: 30px;
+                    height: 50px;
 
                     &:hover {
                         cursor: pointer;
@@ -51,7 +54,7 @@
         .secondInfo {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         &:after {
