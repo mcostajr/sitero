@@ -13,36 +13,36 @@ export default NextAuth({
         password: {  label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        try {
-          const user = await prisma.login.findFirst({
-            where: {
-                userid: credentials.username,
-                user_pass: credentials.password
-            }
-          })
-  
-          if (user) {
-            return user
-          } else {
-            return null
+        const user = await prisma.login.findFirst({
+          where: {
+              userid: credentials.username,
+              user_pass: credentials.password
           }
-        }catch(err) {
-          return null;
-        }finally {
-          await prisma.$disconnect();
+        })
+
+        if (user) {
+          return user
         }
+
+        return null
       }
     }),
   ],
   session: {
-    maxAge: 60 * 60 * 24 // 1 Dia
+    jwt: true,
   },
   callbacks: {
-    async jwt(token, user, account) {
-      if (user) {
-        token.name = user.userid as string;
+    async jwt(token, account) {
+      if(account) {
+        token.account_id = account.account_id as number
+        token.name = account.userid as string
       }
-      return token;
+      return token
     },
-  },
+    async session(session, token) {
+      session.user.account_id = token.account_id as number
+      session.user.name = token.name as string
+      return session
+    },
+  }
 })
