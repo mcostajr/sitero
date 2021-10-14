@@ -1,8 +1,7 @@
 .container {
     display: flex;
     justify-content: center;
-
-    height: 90vh;
+    height: calc(100vh - 80px);
 
     .background {
         position: absolute;
