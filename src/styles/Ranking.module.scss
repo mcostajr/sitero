@@ -1,136 +1,125 @@
 .container {
-    display: flex;
-    justify-content: center;
 
-    .wrapper {
+    .background {
         display: flex;
         flex-direction: column;
-        width: 80%;
-        z-index: 1;
+        align-items: center;
+        width: 100%;
+        height: 365px;
+        background-color: #00ADB8;
 
-        .subContainer{
+        .wrapper {
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            padding: 20px;
+            align-items: center;
+            z-index: 1;
+            width: 80%;
 
-            .filter {
-                ul {
-                    display: flex;
-                    gap: 10px;
-                }
+            h1 {
+                color: var(--white);
+                font-size: 2rem;
+                margin-top: 50px;
             }
-            
-            .leaderboard {
+
+            .subContainer{
                 display: flex;
                 flex-direction: column;
+                gap: 20px;
+                width: 80%;
+                margin-top: 50px;
 
-                .sticky {
-                    position: sticky;
-                    background-color: #fff;
-                    top: 50px;
+                .filter {
+                    ul {
+                        display: flex;
+                        gap: 10px;
+                    }
                 }
-
-                .leaderboardItems {
+                
+                .leaderboard {
                     display: flex;
+                    flex-direction: column;
 
-                    span {
-                        font-size: 1rem;
-                    }
-                    
-                    .position {
-                        flex: 1;
+                    .leaderboardItems {
                         display: flex;
-                        max-width: 100px;
-                    }
+                        
+                        span {
+                            font-size: 1rem;
+                        }
 
-                    .name {
-                        flex: 2;
-                        display: flex;
-                        max-width: 300px;
-                    }
+                        div {
+                            width: 10%;
 
-                    .baseLevel {
-                        flex: 1;
-                        display: flex;
-                        max-width: 100px;
-                    }
+                            &:nth-child(2) {
+                                flex: 1;
+                            }
 
-                    .jobLevel {
-                        flex: 1;
-                        display: flex;
-                        max-width: 100px;
+                            &:last-child {
+                                width: 20%;
+                            }
+                        }
                     }
+    
+                    .leaderboardBody {
+                        height: 3rem;
+    
+                        &:nth-child(2) {
+                            height: 6rem;
 
-                    .class {
-                        flex: 1;
-                        display: flex;
-                        max-width: 100px;
+                            span {
+                                font-size: 1.4rem;
+                            }
+                        }
+    
+                        div {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-bottom: 3px solid rgba(189,188,183,.4);
+                            white-space: nowrap;
+                            overflow: hidden;
+                            
+                            span {
+                                font-size: 1rem;
+                            }
+
+                            &:nth-child(odd) {
+                                background-color: #D3D3D3;
+                            }
+    
+                            &:nth-child(even) {
+                                background-color: #E8E8E8;
+                            }
+                        }
                     }
                 }
 
-                .leaderboardBody {
-                    height: 2.5rem;
+                .pages {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    gap: 5px;
 
-                    &:nth-child(2) {
-                        height: 4rem;
-                    }
-
-                    div {
+                    button {
                         display: flex;
                         align-items: center;
-                        border-bottom: 3px solid rgba(189,188,183,.4);
+                        padding: 10px;
 
-                        &:nth-child(odd) {
-                            background-color: rgba(219,217,210,.6);
+                        border: 0;
+                        border-radius: 50%;
+                        background: 0;
+
+                        &:hover {
+                            background-color: rgba(0, 0, 0, 0.5);
                         }
-
-                        &:nth-child(even) {
-                            background-color: rgba(219, 217, 210, 0.3);
-                        }
-                    }
-
-                    .position {
-                        justify-content: center;
-                    }
-
-                    .name {
-                        justify-content: center;
-                    }
-
-                    .baseLevel {
-                        justify-content: center;
-                    }
-
-                    .jobLevel {
-                        justify-content: center;
-                    }
-
-                    .class {
-                        justify-content: center;
                     }
                 }
             }
         }
     }
 
-    @media (min-width: 768px) {
-        .background {
-             img {
-                position: fixed;
-                top: 100px;
-                right: 0;
-
-                height: 100%;
-             }
-        }
-    }
-
-    @media (max-width: 768px) {
-        .background {
-             img {
-                 display: none;
-             }
-        }
+    .photo{
+        position: absolute;
+        left: 0;
+        bottom: 0;
     }
 }
