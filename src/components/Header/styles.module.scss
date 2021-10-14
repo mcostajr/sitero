@@ -48,6 +48,10 @@
                     }
                 }
             }
+
+            @media (max-width: 1023px) {
+                display: none;
+            }
         }
 
         .login {
@@ -75,41 +79,40 @@
                 border-radius: 50%;
                 background: rgba($color: #201a1a, $alpha: 1.0);
             }
-        }
 
-        .containerButtonMenu {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-
-            .button {
-                cursor: pointer;
-                padding: 10px;
-                background: 0;
-                border: 0;
-                height: 43px;
-                width: 43px;
-
-                .icon {
-                    height: 23px;
-                    width: 23px;
-                    color: white;
-                }
-
-                &:hover {
-                    border-radius: 50%;
-                    background: rgba($color: #201a1a, $alpha: 1.0);
-                }
+            @media (max-width: 1023px) {
+                display: none;
             }
         }
 
-        @media (min-width: 1023px) {
-            .containerButtonMenu { display: none; }
-        }
+        .containerButtonMenu {
+            display: none;
 
-        @media (max-width: 1023px) {
-            .navigation { display: none; }
-            .login { display: none; }
+            @media (max-width: 1023px) {
+                flex: 1;
+                display: flex;
+                justify-content: flex-end;
+
+                .button {
+                    cursor: pointer;
+                    padding: 10px;
+                    background: 0;
+                    border: 0;
+                    height: 43px;
+                    width: 43px;
+
+                    .icon {
+                        height: 23px;
+                        width: 23px;
+                        color: white;
+                    }
+
+                    &:hover {
+                        border-radius: 50%;
+                        background: rgba($color: #201a1a, $alpha: 1.0);
+                    }
+                }
+            }
         }
     }
 }
