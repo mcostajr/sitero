@@ -1,27 +1,31 @@
-import Head from 'next/head';
-import Image from 'next/image';
+import Head from 'next/head'
+import Image from 'next/image'
+import Router from 'next/router'
+import { useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { api } from '../services/axios';
+import { GiConfirmed, GiCancel } from 'react-icons/gi'
 
+import { api } from '../services/axios'
 import styles from '../styles/Register.module.scss'
-import { useState } from 'react';
-import Router from 'next/router';
 
-type IFormInput = {
+type FormInput = {
     username: string;
     password: string;
     email: string;
 }
 
 export default function Register() {
-
+    
+    const [ password, setPassword ] = useState('');
     const [ userAvaible, setuserAvaible ] = useState(false);
     const [ passAvaible, setpassAvaible ] = useState(false);
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const [ confirmPassAvaible, setconfirmPassAvaible ] = useState(false);
+    const [ confirmTerms, setconfirmTerms ] = useState(false);
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit: SubmitHandler<IFormInput> = async ({username, password, email}) => {
+    const onSubmit: SubmitHandler<FormInput> = async ({username, password, email}) => {
         
-        if(userAvaible && passAvaible) {
+        if(userAvaible && passAvaible && confirmPassAvaible) {
             try {
                 await api.post('/account', {
                     username: username,
@@ -35,11 +39,8 @@ export default function Register() {
                 console.log('Algum erro')
             }
         } else {
-            if(!userAvaible) {
-                console.log('Username Invalido')
-            }
-            if(!passAvaible) {
-                console.log('Senha Invalido')
+            if(!userAvaible || !passAvaible || !confirmPassAvaible) {
+                alert('Credenciais Invalidas')
             }
         }
     }
@@ -47,6 +48,7 @@ export default function Register() {
     async function onChangeUsername(event: React.ChangeEvent<HTMLInputElement>) {
         const login = event.target.value
 
+        console.log(confirmTerms)
         if(login.length > 3) {
             
             // await api.get('/account', { 
@@ -63,11 +65,30 @@ export default function Register() {
 
     async function onChangePassword(event: React.ChangeEvent<HTMLInputElement>) {
         const password = event.target.value
+        const minCharacter = 5
+        const regularExpression = /[#?!@$%^&*-]/;
 
-        if(password.length > 5) {
-            setpassAvaible(true)
-        } else {
+        setPassword(password)
+        if (password.length < minCharacter) {
             setpassAvaible(false)
+        } else if (password.search(/[A-Z]/) < 0) {
+            setpassAvaible(false)
+        } else if (password.search(/[0-9]/) < 0) {
+            setpassAvaible(false)
+        } else if (password.search(regularExpression) < 0) {
+            setpassAvaible(false)
+        } else {
+            setpassAvaible(true)
+        }
+    }
+
+    async function onConfirmPassword(event: React.ChangeEvent<HTMLInputElement>) {
+        const confirmPassword = event.target.value
+
+        if(confirmPassword === password) {
+            setconfirmPassAvaible(true)
+        } else {
+            setconfirmPassAvaible(false)
         }
     }
 
@@ -81,37 +102,47 @@ export default function Register() {
                     <h2>REGISTRO</h2>
                     <div className={styles.registerContainer}>
                         <form onSubmit={handleSubmit(onSubmit)} className={styles.registerForm}>
-                            <input 
-                                {...register('username')} 
-                                type="text"  
-                                onChange={onChangeUsername}
-                                minLength={4}
-                                maxLength={23}
-                                placeholder="Username"
-                            />
-                            <input 
-                                {...register('password')} 
-                                type="password" 
-                                onChange={onChangePassword} 
-                                minLength={8}
-                                maxLength={32}
-                                placeholder="Senha"
-                            />
-                            <input 
-                                {...register('password')} 
-                                type="password" 
-                                onChange={onChangePassword} 
-                                minLength={8}
-                                maxLength={32}
-                                placeholder="Confirmar Senha"
-                            />
-                            <input 
-                                {...register('email')} 
-                                type="email" 
-                                placeholder="Email"
-                            />
+                            <div className={styles.input}>
+                                <input 
+                                    {...register('username')} 
+                                    type="text"  
+                                    onChange={onChangeUsername}
+                                    minLength={4}
+                                    maxLength={23}
+                                    placeholder="Username"
+                                />
+                                {userAvaible ? <GiConfirmed/> : <GiCancel/>}
+                            </div>
+                            <div className={styles.input}>
+                                <input 
+                                    {...register('password')} 
+                                    type="password" 
+                                    onChange={onChangePassword} 
+                                    minLength={8}
+                                    maxLength={32}
+                                    placeholder="Senha"
+                                />
+                                {passAvaible ? <GiConfirmed/> : <GiCancel/>}
+                            </div>
+                            <div className={styles.input}>
+                                <input 
+                                    type="password" 
+                                    onChange={onConfirmPassword} 
+                                    minLength={8}
+                                    maxLength={32}
+                                    placeholder="Confirmar Senha"
+                                />
+                                {confirmPassAvaible ? <GiConfirmed/> : <GiCancel/>}
+                            </div>
+                            <div className={styles.input}>
+                                <input 
+                                    {...register('email')} 
+                                    type="email" 
+                                    placeholder="Email"
+                                />
+                            </div>
                             <div className={styles.checkService}>
-                                <input type="checkbox" name="servico" id="servico" />
+                                <input type="checkbox" name="servico" id="servico" onChange={() => setconfirmTerms(!confirmTerms)}/>
                                 <span>Confirmar <a>Termos de Serviços</a>.</span>
                             </div>
                             <input className={styles.registerButton} type="submit" value="CRIAR MINHA CONTA" />

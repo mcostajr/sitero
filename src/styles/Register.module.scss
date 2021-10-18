@@ -34,6 +34,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-around;
+                flex-wrap: wrap;
     
                 .registerForm {
                     display: flex;
@@ -41,13 +42,22 @@
                     width: 300px;
                     gap: 20px;
             
+                    .input {
+                        display: flex;
+                        align-items: center;
+
+                        input {
+                            flex: 1;
+                        }
+                    }
+                    
                     input {
                         height: 50px;
                         border: 1px solid black;
                         border-radius: 5px;
                         padding: 5px 10px;
                     }
-    
+
                     .checkService{
                         display: flex;
                         gap: 10px;
