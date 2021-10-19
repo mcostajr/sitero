@@ -1,18 +1,66 @@
 .container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 80px);
+    
+    .wrapper{
+        height: 100%;
 
-    .subHeader {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 200px;
-        background-color: rgb(31, 31, 114);
+        .banner {
+            display: flex;
+            justify-content: center;
+            height: 200px;
+            width: 100%;
+
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
 
         .profile {
             display: flex;
-            width: 80%;
-            transform: translate(0,-50%);
-        }
-    }
+            position: absolute;
+            transform: translate(0, -60%);
+            z-index: 100;
 
+            .subprofile {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                color: white;
+
+                margin-left: 32px;
+            
+                .moldier {
+                    border: 5px solid black;
+                    border-radius: 50%;
+                    height: 180px;
+                    width: 180px;
+
+                    img {
+                        border-radius: 50%;
+                    }
+                }
+
+                .name {
+
+                }
+
+            }
+        }
+
+        .subWrapper {
+            position: relative;
+            display: flex;
+            min-height: calc(100% - 200px);
+
+            .newpage {
+                flex: 1;
+                overflow: auto;
+            }
+        }
+
+    }
 
 }

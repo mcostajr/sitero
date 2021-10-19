@@ -1,11 +1,6 @@
+import { User } from "next-auth";
 import { useSession } from "next-auth/client";
 import { createContext, ReactNode, useEffect, useState } from "react";
-
-type User = {
-    name?: string | null | undefined;
-    email?: string | null | undefined;
-    image?: string | null | undefined;
-}
 
 type LoginProviderType = {
     children: ReactNode;

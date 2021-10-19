@@ -17,8 +17,8 @@ export default function Profile() {
           <span>{user?.name}</span>
         </div>
         <nav>
-          <Link href="/profile"><a>Editar Perfil</a></Link>
-          <Link href="/reset"><a>Trocar Senha</a></Link>
+          <Link href="/profile"><a>Perfil</a></Link>
+          <Link href="/profile/edit"><a>Trocar Senha</a></Link>
         </nav>
         <button className={styles.buttonSingOut} onClick={() => signOut()}>Sing Out</button>
       </div>
