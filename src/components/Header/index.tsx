@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import Router from 'next/router';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AiOutlineMenu, AiOutlineDown} from 'react-icons/ai'
 import { FaRegUserCircle } from 'react-icons/fa'
 
@@ -36,20 +37,17 @@ export default function Header() {
   return (
     <header className={`${styles.container} ${isSticky ? styles.sticky : ''}`} ref={divRef}>
       <div className={styles.wrapper}>
-        <div className={styles.logo}>
-          <Image
-            src="/logo.png"
-            alt="logo"
-            layout='fill'
-            objectFit="contain"
-            className={styles.image}
-          />
-        </div>
-        <nav className={styles.navigation}>
-          <ul className={styles.navigationList}>
-            <NavList/>
-          </ul>
-        </nav>
+        <Image
+          src="/logo.png"
+          alt="logo"
+          layout='fixed'
+          objectFit="cover"
+          width="120px"
+          height="80px"
+          className={styles.logo}
+          onClick={() => Router.push('/')}
+        />
+        <NavList/>
         <ProfInfo/>
         <ButtonMenu/>
         <DropdownMenu/>
@@ -101,14 +99,16 @@ export function NavItem(props: any) {
 
 export function NavList() {
   return (
-    <>
-      <NavItem href="/">Inicio</NavItem>
-      <NavItem href="/download">Downloads</NavItem>
-      <NavItem href="/info">Info</NavItem>
-      <NavItem href="/ranking">Ranking</NavItem>
-      <NavItem href="/donation">Doações</NavItem>
-      <NavItem href="/register">Registrar</NavItem>
-      <NavItem href="/jobs">Classes</NavItem>
-    </>
+    <nav className={styles.navigation}>
+      <ul className={styles.navigationList}>
+        <NavItem href="/">Inicio</NavItem>
+        <NavItem href="/download">Downloads</NavItem>
+        <NavItem href="/info">Info</NavItem>
+        <NavItem href="/ranking">Ranking</NavItem>
+        <NavItem href="/donation">Doações</NavItem>
+        <NavItem href="/register">Registrar</NavItem>
+        <NavItem href="/jobs">Classes</NavItem>
+      </ul>
+    </nav>
   )
 }
