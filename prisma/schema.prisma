@@ -921,14 +921,270 @@ model vendings {
 }
 
 model quest {
-  char_id  Int         @default(0) @db.UnsignedInt
-  quest_id Int         @db.UnsignedInt
-  time     Int         @default(0) @db.UnsignedInt
-  count1   Int         @default(0) @db.UnsignedMediumInt
-  count2   Int         @default(0) @db.UnsignedMediumInt
-  count3   Int         @default(0) @db.UnsignedMediumInt
+  char_id  Int @default(0) @db.UnsignedInt
+  quest_id Int @db.UnsignedInt
+  time     Int @default(0) @db.UnsignedInt
+  count1   Int @default(0) @db.UnsignedMediumInt
+  count2   Int @default(0) @db.UnsignedMediumInt
+  count3   Int @default(0) @db.UnsignedMediumInt
 
   @@id([char_id, quest_id])
+}
+
+model item_db {
+  id                              Int      @id @default(0) @db.UnsignedInt
+  name_aegis                      String   @unique(map: "UniqueAegisName") @default("") @db.VarChar(50)
+  name_english                    String   @default("") @db.VarChar(100)
+  type                            String?  @db.VarChar(20)
+  subtype                         String?  @db.VarChar(20)
+  price_buy                       Int?     @db.UnsignedMediumInt
+  price_sell                      Int?     @db.UnsignedMediumInt
+  weight                          Int?     @db.UnsignedSmallInt
+  attack                          Int?     @db.UnsignedSmallInt
+  defense                         Int?     @db.UnsignedSmallInt
+  range                           Int?     @db.UnsignedTinyInt
+  slots                           Int?     @db.UnsignedTinyInt
+  job_all                         Boolean?
+  job_acolyte                     Boolean?
+  job_alchemist                   Boolean?
+  job_archer                      Boolean?
+  job_assassin                    Boolean?
+  job_barddancer                  Boolean?
+  job_blacksmith                  Boolean?
+  job_crusader                    Boolean?
+  job_gunslinger                  Boolean?
+  job_hunter                      Boolean?
+  job_knight                      Boolean?
+  job_mage                        Boolean?
+  job_merchant                    Boolean?
+  job_monk                        Boolean?
+  job_ninja                       Boolean?
+  job_novice                      Boolean?
+  job_priest                      Boolean?
+  job_rogue                       Boolean?
+  job_sage                        Boolean?
+  job_soullinker                  Boolean?
+  job_stargladiator               Boolean?
+  job_supernovice                 Boolean?
+  job_swordman                    Boolean?
+  job_taekwon                     Boolean?
+  job_thief                       Boolean?
+  job_wizard                      Boolean?
+  class_all                       Boolean?
+  class_normal                    Boolean?
+  class_upper                     Boolean?
+  class_baby                      Boolean?
+  gender                          String?  @db.VarChar(10)
+  location_head_top               Boolean?
+  location_head_mid               Boolean?
+  location_head_low               Boolean?
+  location_armor                  Boolean?
+  location_right_hand             Boolean?
+  location_left_hand              Boolean?
+  location_garment                Boolean?
+  location_shoes                  Boolean?
+  location_right_accessory        Boolean?
+  location_left_accessory         Boolean?
+  location_costume_head_top       Boolean?
+  location_costume_head_mid       Boolean?
+  location_costume_head_low       Boolean?
+  location_costume_garment        Boolean?
+  location_ammo                   Boolean?
+  location_shadow_armor           Boolean?
+  location_shadow_weapon          Boolean?
+  location_shadow_shield          Boolean?
+  location_shadow_shoes           Boolean?
+  location_shadow_right_accessory Boolean?
+  location_shadow_left_accessory  Boolean?
+  weapon_level                    Boolean?
+  armor_level                     Boolean?
+  equip_level_min                 Int?     @db.UnsignedTinyInt
+  equip_level_max                 Int?     @db.UnsignedTinyInt
+  refineable                      Boolean?
+  view                            Int?     @db.UnsignedSmallInt
+  alias_name                      String?  @db.VarChar(50)
+  flag_buyingstore                Boolean?
+  flag_deadbranch                 Boolean?
+  flag_container                  Boolean?
+  flag_uniqueid                   Boolean?
+  flag_bindonequip                Boolean?
+  flag_dropannounce               Boolean?
+  flag_noconsume                  Boolean?
+  flag_dropeffect                 String?  @db.VarChar(20)
+  delay_duration                  BigInt?  @db.UnsignedBigInt
+  delay_status                    String?  @db.VarChar(30)
+  stack_amount                    Int?     @db.UnsignedSmallInt
+  stack_inventory                 Boolean?
+  stack_cart                      Boolean?
+  stack_storage                   Boolean?
+  stack_guildstorage              Boolean?
+  nouse_override                  Int?     @db.UnsignedSmallInt
+  nouse_sitting                   Boolean?
+  trade_override                  Int?     @db.UnsignedSmallInt
+  trade_nodrop                    Boolean?
+  trade_notrade                   Boolean?
+  trade_tradepartner              Boolean?
+  trade_nosell                    Boolean?
+  trade_nocart                    Boolean?
+  trade_nostorage                 Boolean?
+  trade_noguildstorage            Boolean?
+  trade_nomail                    Boolean?
+  trade_noauction                 Boolean?
+  script                          String?  @db.Text
+  equip_script                    String?  @db.Text
+  unequip_script                  String?  @db.Text
+}
+
+model mob_db {
+  id                              Int      @id @db.UnsignedInt
+  name_aegis                      String   @unique(map: "name_aegis") @db.VarChar(24)
+  name_english                    String   @db.Text
+  name_japanese                   String?  @db.Text
+  level                           Int?     @db.UnsignedSmallInt
+  hp                              Int?     @db.UnsignedInt
+  sp                              Int?     @db.UnsignedMediumInt
+  base_exp                        Int?     @db.UnsignedInt
+  job_exp                         Int?     @db.UnsignedInt
+  mvp_exp                         Int?     @db.UnsignedInt
+  attack                          Int?     @db.UnsignedSmallInt
+  attack2                         Int?     @db.UnsignedSmallInt
+  defense                         Int?     @db.UnsignedSmallInt
+  magic_defense                   Int?     @db.UnsignedSmallInt
+  str                             Int?     @db.UnsignedSmallInt
+  agi                             Int?     @db.UnsignedSmallInt
+  vit                             Int?     @db.UnsignedSmallInt
+  int                             Int?     @db.UnsignedSmallInt
+  dex                             Int?     @db.UnsignedSmallInt
+  luk                             Int?     @db.UnsignedSmallInt
+  attack_range                    Int?     @db.UnsignedTinyInt
+  skill_range                     Int?     @db.UnsignedTinyInt
+  chase_range                     Int?     @db.UnsignedTinyInt
+  size                            String?  @db.VarChar(24)
+  race                            String?  @db.VarChar(24)
+  racegroup_goblin                Boolean?
+  racegroup_kobold                Boolean?
+  racegroup_orc                   Boolean?
+  racegroup_golem                 Boolean?
+  racegroup_guardian              Boolean?
+  racegroup_ninja                 Boolean?
+  racegroup_gvg                   Boolean?
+  racegroup_battlefield           Boolean?
+  racegroup_treasure              Boolean?
+  racegroup_biolab                Boolean?
+  racegroup_manuk                 Boolean?
+  racegroup_splendide             Boolean?
+  racegroup_scaraba               Boolean?
+  racegroup_ogh_atk_def           Boolean?
+  racegroup_ogh_hidden            Boolean?
+  racegroup_bio5_swordman_thief   Boolean?
+  racegroup_bio5_acolyte_merchant Boolean?
+  racegroup_bio5_mage_archer      Boolean?
+  racegroup_bio5_mvp              Boolean?
+  racegroup_clocktower            Boolean?
+  racegroup_thanatos              Boolean?
+  racegroup_faceworm              Boolean?
+  racegroup_hearthunter           Boolean?
+  racegroup_rockridge             Boolean?
+  racegroup_werner_lab            Boolean?
+  racegroup_temple_demon          Boolean?
+  racegroup_illusion_vampire      Boolean?
+  element                         String?  @db.VarChar(24)
+  element_level                   Int?     @db.UnsignedTinyInt
+  walk_speed                      Int?     @db.UnsignedSmallInt
+  attack_delay                    Int?     @db.UnsignedSmallInt
+  attack_motion                   Int?     @db.UnsignedSmallInt
+  damage_motion                   Int?     @db.UnsignedSmallInt
+  damage_taken                    Int?     @db.UnsignedSmallInt
+  ai                              String?  @db.VarChar(2)
+  class                           String?  @db.VarChar(50)
+  mode_canmove                    Boolean?
+  mode_looter                     Boolean?
+  mode_aggressive                 Boolean?
+  mode_assist                     Boolean?
+  mode_castsensoridle             Boolean?
+  mode_norandomwalk               Boolean?
+  mode_nocast                     Boolean?
+  mode_canattack                  Boolean?
+  mode_castsensorchase            Boolean?
+  mode_changechase                Boolean?
+  mode_angry                      Boolean?
+  mode_changetargetmelee          Boolean?
+  mode_changetargetchase          Boolean?
+  mode_targetweak                 Boolean?
+  mode_randomtarget               Boolean?
+  mode_ignoremelee                Boolean?
+  mode_ignoremagic                Boolean?
+  mode_ignoreranged               Boolean?
+  mode_mvp                        Boolean?
+  mode_ignoremisc                 Boolean?
+  mode_knockbackimmune            Boolean?
+  mode_teleportblock              Boolean?
+  mode_fixeditemdrop              Boolean?
+  mode_detector                   Boolean?
+  mode_statusimmune               Boolean?
+  mode_skillimmune                Boolean?
+  mvpdrop1_item                   String?  @db.VarChar(50)
+  mvpdrop1_rate                   Int?     @db.UnsignedSmallInt
+  mvpdrop1_option                 String?  @db.VarChar(50)
+  mvpdrop1_index                  Int?     @db.UnsignedTinyInt
+  mvpdrop2_item                   String?  @db.VarChar(50)
+  mvpdrop2_rate                   Int?     @db.UnsignedSmallInt
+  mvpdrop2_option                 String?  @db.VarChar(50)
+  mvpdrop2_index                  Int?     @db.UnsignedTinyInt
+  mvpdrop3_item                   String?  @db.VarChar(50)
+  mvpdrop3_rate                   Int?     @db.UnsignedSmallInt
+  mvpdrop3_option                 String?  @db.VarChar(50)
+  mvpdrop3_index                  Int?     @db.UnsignedTinyInt
+  drop1_item                      String?  @db.VarChar(50)
+  drop1_rate                      Int?     @db.UnsignedSmallInt
+  drop1_nosteal                   Boolean?
+  drop1_option                    String?  @db.VarChar(50)
+  drop1_index                     Int?     @db.UnsignedTinyInt
+  drop2_item                      String?  @db.VarChar(50)
+  drop2_rate                      Int?     @db.UnsignedSmallInt
+  drop2_nosteal                   Boolean?
+  drop2_option                    String?  @db.VarChar(50)
+  drop2_index                     Int?     @db.UnsignedTinyInt
+  drop3_item                      String?  @db.VarChar(50)
+  drop3_rate                      Int?     @db.UnsignedSmallInt
+  drop3_nosteal                   Boolean?
+  drop3_option                    String?  @db.VarChar(50)
+  drop3_index                     Int?     @db.UnsignedTinyInt
+  drop4_item                      String?  @db.VarChar(50)
+  drop4_rate                      Int?     @db.UnsignedSmallInt
+  drop4_nosteal                   Boolean?
+  drop4_option                    String?  @db.VarChar(50)
+  drop4_index                     Int?     @db.UnsignedTinyInt
+  drop5_item                      String?  @db.VarChar(50)
+  drop5_rate                      Int?     @db.UnsignedSmallInt
+  drop5_nosteal                   Boolean?
+  drop5_option                    String?  @db.VarChar(50)
+  drop5_index                     Int?     @db.UnsignedTinyInt
+  drop6_item                      String?  @db.VarChar(50)
+  drop6_rate                      Int?     @db.UnsignedSmallInt
+  drop6_nosteal                   Boolean?
+  drop6_option                    String?  @db.VarChar(50)
+  drop6_index                     Int?     @db.UnsignedTinyInt
+  drop7_item                      String?  @db.VarChar(50)
+  drop7_rate                      Int?     @db.UnsignedSmallInt
+  drop7_nosteal                   Boolean?
+  drop7_option                    String?  @db.VarChar(50)
+  drop7_index                     Int?     @db.UnsignedTinyInt
+  drop8_item                      String?  @db.VarChar(50)
+  drop8_rate                      Int?     @db.UnsignedSmallInt
+  drop8_nosteal                   Boolean?
+  drop8_option                    String?  @db.VarChar(50)
+  drop8_index                     Int?     @db.UnsignedTinyInt
+  drop9_item                      String?  @db.VarChar(50)
+  drop9_rate                      Int?     @db.UnsignedSmallInt
+  drop9_nosteal                   Boolean?
+  drop9_option                    String?  @db.VarChar(50)
+  drop9_index                     Int?     @db.UnsignedTinyInt
+  drop10_item                     String?  @db.VarChar(50)
+  drop10_rate                     Int?     @db.UnsignedSmallInt
+  drop10_nosteal                  Boolean?
+  drop10_option                   String?  @db.VarChar(50)
+  drop10_index                    Int?     @db.UnsignedTinyInt
 }
 
 enum buyingstores_sex {

@@ -1,9 +1,9 @@
 import { GetServerSideProps } from "next";
 import { getSession } from "next-auth/client"
 import Image from 'next/image';
-import Profile, { ProfileProps } from "..";
+import { PrismaClient, Prisma } from '@prisma/client'
 
-import { api } from "../../../services/axios";
+import Profile, { ProfileProps } from "..";
 import { className } from "../../../services/helper";
 import styles from './styles.module.scss'
 
@@ -97,6 +97,8 @@ function Character({character}: CharacterProps) {
     )
 }
 
+const prisma = new PrismaClient();
+
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     const session = await getSession(ctx);
@@ -112,13 +114,36 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         }
     }
 
-    const { data } = await api.get('/character', {
-        params: {
-            account_id: session?.user.account_id
+    const data = await prisma.char.findMany({
+        where: {
+            account_id: Number(player?.account_id)
         }
     })
 
-    const characters = data
+    const characters = data.map(character => {
+        return {
+            char_id: character.char_id,
+            name: character.name,
+            class: character.class,
+            base_level: character.base_level,
+            job_level: character.job_level,
+            base_exp: Number(character.base_exp),
+            job_exp: Number(character.job_exp),
+            zeny: character.zeny,
+            party_id: character.party_id,
+            guild_id: character.guild_id,
+            hair: character.hair,
+            hair_color: character.hair_color,
+            clothes_color: character.clothes_color,
+            body: character.body,
+            head_top: character.head_top,
+            head_mid: character.head_mid,
+            head_bottom: character.head_bottom,
+            last_map: character.last_map,
+            save_map: character.save_map,
+            sex: character.sex,
+        }
+    })
 
     return { 
         props: {

@@ -1,8 +1,50 @@
 .container {
-    position: fixed;
-    background-color: rgb(37, 26, 26);
-    padding: 1rem;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    background-color: rgb(32, 32, 32);
     border-radius: 10px;
-    transform: translate(-45%, 60%);
-    z-index: 10;
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        gap: 15px;
+        width: 250px;
+        
+        input {
+            height: 30px;
+            border: 0;
+            border-radius: 5px;
+            padding: 10px 5px;
+            font-size: 0.9rem;
+            outline: 0;
+        }
+
+        .register {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+
+            a {
+                color: var(--text-200);
+                &:hover {
+                    color: var(--white);
+                }
+            }
+        }
+
+        button {
+            height: 30px;
+            border: 0;
+            border-radius: 5px;
+            background-color: var(--blue-100);
+            color: var(--white);
+
+            &:hover {
+                filter: brightness(0.6);
+                transition: all 0.5s;
+            }
+        }
+    }
 }

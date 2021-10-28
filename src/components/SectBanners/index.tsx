@@ -14,8 +14,10 @@ export default function Banners() {
           </div>
           <div className={styles.logos}>
             <Image
-              layout="fill"
-              objectFit="cover"
+              layout="responsive"
+              height={100}
+              width={100}
+              objectFit="contain"
               src="/capa.png"
               alt="capa"
             />

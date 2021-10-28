@@ -42,12 +42,18 @@
                     width: 300px;
                     gap: 20px;
             
-                    .input {
+                    .text {
+                        position: relative;
                         display: flex;
                         align-items: center;
 
                         input {
                             flex: 1;
+                        }
+
+                        .avaible {
+                            position: absolute;
+                            transform: translateX(310px);
                         }
                     }
                     

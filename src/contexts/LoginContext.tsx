@@ -1,31 +1,39 @@
-import { User } from "next-auth";
-import { useSession } from "next-auth/client";
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { signIn } from "next-auth/client";
+import { createContext, ReactNode, useState } from "react";
+
+type SignInType = {
+    username: string;
+    password: string;
+}
 
 type LoginProviderType = {
     children: ReactNode;
 }
 
 type LoginContextType = {
-    user: User | null;
+    invalidCredential: boolean,
+    handleSignIn: ({username, password}: SignInType) => void,
 }
 
 export const LoginContext = createContext({} as LoginContextType);
 
 export default function LoginProvider({children}: LoginProviderType) {
 
-    const [session, loading] = useSession()
+    const [ invalidCredential, setInvalidCredential ] = useState(false);
 
-    const [ user, setUser ]= useState<User | null>(session?.user ?? null)
-
-    useEffect(() => {
-        setUser(session?.user as User ?? null)
-    },[session])
+    async function handleSignIn({username, password}: SignInType) {
+      const res = await signIn('credentials', { redirect: false, username: username, password: password })
+      
+      if(res?.error == "CredentialsSignin") {
+        setInvalidCredential(true);
+      }
+    }
 
     return (
         <LoginContext.Provider 
             value={{
-                user
+                invalidCredential,
+                handleSignIn
             }}
         >
             {children}

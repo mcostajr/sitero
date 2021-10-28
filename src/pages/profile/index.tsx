@@ -5,6 +5,8 @@ import { ReactNode, useState } from "react";
 
 import styles from '../../styles/Profile.module.scss';
 import Sidebar from "../../components/Sidebar";
+import { GetServerSideProps } from 'next';
+import { getSession } from 'next-auth/client';
 
 type Player = {
     name: string
@@ -49,4 +51,26 @@ export default function Profile({children,player}: ProfileProps) {
             </main>
         </div>
     )
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+
+    const session = await getSession(ctx);
+
+    const player = session?.user;
+
+    if(!session) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false
+            }
+        }
+    }
+
+    return { 
+        props: {
+            player
+        }
+    }
 }

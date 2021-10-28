@@ -1,5 +1,5 @@
 .container {
-    height: 650px;
+    height: 750px;
 
     background-image: url('/background.jpg');
     background-repeat: no-repeat;
@@ -7,9 +7,11 @@
     background-position: bottom;
 
     .wrapper {
+        position: relative;
         display: flex;
         justify-content: center;
         height: 100%;
+        overflow: hidden;
 
         .subWrapper {
             position: relative;
@@ -24,6 +26,7 @@
                 font-size: 3rem;
                 color: var(--white);
                 transform: translateY(-150px);
+                text-align: center;
             }
     
             button {
@@ -48,11 +51,11 @@
 
         .logos {
             position: absolute;
-            width: 681px;
-            height: 535px;
+            width: 42rem;
+            height: 33rem;
 
-            right: 50px;
-            transform: translateY(115px);
+            left: 900px;
+            bottom: 0;
         }
     }
 }

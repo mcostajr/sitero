@@ -1,32 +1,31 @@
-import Link from 'next/link'
 import Image from 'next/image'
-import Router from 'next/router';
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { AiOutlineMenu, AiOutlineDown} from 'react-icons/ai'
-import { FaRegUserCircle } from 'react-icons/fa'
+import Router, { useRouter } from 'next/router';
+import React, { useEffect, useRef, useState } from 'react';
 
-import { MenuContext } from '../../contexts/MenuContext';
-import { LoginContext } from '../../contexts/LoginContext';
-import DropDownLogin from '../DropDownLogin';
 import DropdownMenu from '../DropDownMenu';
+import ButtonMenu from './ButtonMenu';
+import ProfInfo from './ProfInfo';
+import NavList from './NavList';
 
 import styles from './styles.module.scss'
 
 export default function Header() {
-  
+
   const [isSticky, setSticky] = useState(false);
   const divRef = useRef<HTMLDivElement>(null)
+  const router = useRouter()
+
+  const handleScroll = () => {
+    if(divRef.current!.getBoundingClientRect().width > 768) {
+      (window.scrollY > divRef.current!.getBoundingClientRect().height
+      ? setSticky(true)
+      : setSticky(false))
+
+    }
+  }
 
   useEffect(() => {
-    const handleScroll = () => {
-        if(divRef.current!.getBoundingClientRect().width > 768) {
-          (window.scrollY > divRef.current!.getBoundingClientRect().height + 550
-          ? setSticky(true)
-          : setSticky(false))
 
-        }
-    }
-  
     window.addEventListener('scroll', handleScroll);
     
     return () => {
@@ -35,7 +34,14 @@ export default function Header() {
   })
 
   return (
-    <header className={`${styles.container} ${isSticky ? styles.sticky : ''}`} ref={divRef}>
+    <header 
+      className={`
+        ${styles.container} 
+        ${isSticky ? styles.sticky : ''} 
+        ${router.pathname == "/" ? styles.transparent : ''}
+      `} 
+      ref={divRef}
+    >
       <div className={styles.wrapper}>
         <Image
           src="/logo.png"
@@ -50,65 +56,7 @@ export default function Header() {
         <NavList/>
         <ProfInfo/>
         <ButtonMenu/>
-        <DropdownMenu/>
       </div>
     </header>
-  )
-}
-
-function ButtonMenu() {
-
-  const { toggleMenu } = useContext(MenuContext);
-
-  return (
-    <div className={styles.containerButtonMenu}>
-      <button 
-        className={styles.button} 
-        onClick={() => toggleMenu()}
-      >
-        <AiOutlineMenu className={styles.icon} />
-      </button>
-    </div>
-  )
-}
-
-function ProfInfo() {
-
-  const { user } = useContext(LoginContext);
-  const { toggleMenuLogin } = useContext(MenuContext)
-  
-  return (
-    <div className={styles.login}>
-      <FaRegUserCircle className={styles.avatar}/>
-      <span>{user ? user.name : 'Visitante'}</span>
-      <AiOutlineDown className={styles.buttonDropDownLogin} onClick={() => toggleMenuLogin()}/>
-      <DropDownLogin/>
-    </div>
-  )
-}
-
-export function NavItem(props: any) {
-  return (
-    <li className={styles.navigationItem}>
-      <Link href={props.href}>
-        <a>{props.children}</a>
-      </Link>
-    </li>
-  )
-}
-
-export function NavList() {
-  return (
-    <nav className={styles.navigation}>
-      <ul className={styles.navigationList}>
-        <NavItem href="/">Inicio</NavItem>
-        <NavItem href="/download">Downloads</NavItem>
-        <NavItem href="/info">Info</NavItem>
-        <NavItem href="/ranking">Ranking</NavItem>
-        <NavItem href="/donation">Doações</NavItem>
-        <NavItem href="/register">Registrar</NavItem>
-        <NavItem href="/jobs">Classes</NavItem>
-      </ul>
-    </nav>
   )
 }

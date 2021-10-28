@@ -1,7 +1,7 @@
-import styles from './styles.module.scss'
+import Image from 'next/image'
 import { FaStar } from 'react-icons/fa'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
-import Image from 'next/image'
+import styles from './styles.module.scss'
 
 export default function NewsShop() {
     return (

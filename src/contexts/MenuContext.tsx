@@ -6,10 +6,10 @@ type MenuProviderType = {
 }
 
 type MenuContextType = {
-    open: boolean,
+    openMenu: boolean,
     toggleMenu: () => void,
-    openLogin: boolean,
-    toggleMenuLogin: () => void,
+    openArrow: boolean,
+    toggleArrow: () => void,
     handleClickOutside: (divRef: React.RefObject<HTMLDivElement>, event: any) => void
 }
 
@@ -17,31 +17,31 @@ export const MenuContext = createContext({} as MenuContextType);
 
 export default function MenuProvider({children}: MenuProviderType) {
 
-    const [ open, setOpen ] = useState(false)
-    const [ openLogin, setOpenLogin ] = useState(false)
+    const [ openMenu, setOpenMenu ] = useState(false)
+    const [ openArrow, setOpenArrow ] = useState(false)
 
     function toggleMenu() {
-        setOpen(!open)
+        setOpenMenu(!openMenu)
     }
 
-    function toggleMenuLogin() {
-        setOpenLogin(!openLogin)
+    function toggleArrow() {
+        setOpenArrow(!openArrow)
     }
     
     function handleClickOutside(divRef: React.RefObject<HTMLDivElement> , event: any) {
         if (divRef.current && !divRef.current.contains(event.target)){
-            openLogin && toggleMenuLogin()
-            open && toggleMenu()
+            openMenu && toggleMenu()
+            openArrow && toggleArrow()
         }
     }
 
     return (
         <MenuContext.Provider 
             value={{
-                open,
+                openMenu,
                 toggleMenu,
-                openLogin,
-                toggleMenuLogin,
+                openArrow,
+                toggleArrow,
                 handleClickOutside
             }}
         >
